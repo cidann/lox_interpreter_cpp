@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/home/ruichen/compiler/build/src/input",
+  "command": "/usr/bin/c++  -I/home/ruichen/compiler/include -fPIC -std=gnu++20 -o CMakeFiles/lox_input.dir/input.cpp.o -c /home/ruichen/compiler/src/input/input.cpp",
+  "file": "/home/ruichen/compiler/src/input/input.cpp"
+},
+{
+  "directory": "/home/ruichen/compiler/build/src/scanner",
+  "command": "/usr/bin/c++  -I/home/ruichen/compiler/include -fPIC -std=gnu++20 -o CMakeFiles/lox_scanner.dir/scanner.cpp.o -c /home/ruichen/compiler/src/scanner/scanner.cpp",
+  "file": "/home/ruichen/compiler/src/scanner/scanner.cpp"
+},
+{
+  "directory": "/home/ruichen/compiler/build/src/core",
+  "command": "/usr/bin/c++  -I/home/ruichen/compiler/include -fPIC -std=gnu++20 -o CMakeFiles/lox_core.dir/core.cpp.o -c /home/ruichen/compiler/src/core/core.cpp",
+  "file": "/home/ruichen/compiler/src/core/core.cpp"
+},
+{
+  "directory": "/home/ruichen/compiler/build/tools",
+  "command": "/usr/bin/c++  -I/home/ruichen/compiler/include -I/home/ruichen/compiler/src/LOX_INCLUDE_DIR -fPIE -std=gnu++20 -o CMakeFiles/lox_compiler.dir/lox.cpp.o -c /home/ruichen/compiler/tools/lox.cpp",
+  "file": "/home/ruichen/compiler/tools/lox.cpp"
+}
+]

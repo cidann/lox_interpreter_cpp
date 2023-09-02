@@ -1,0 +1,17 @@
+/home/ruichen/compiler/build/CMakeFiles/edit_cache.dir
+/home/ruichen/compiler/build/CMakeFiles/rebuild_cache.dir
+/home/ruichen/compiler/build/src/CMakeFiles/lox.dir
+/home/ruichen/compiler/build/src/CMakeFiles/edit_cache.dir
+/home/ruichen/compiler/build/src/CMakeFiles/rebuild_cache.dir
+/home/ruichen/compiler/build/src/input/CMakeFiles/lox_input.dir
+/home/ruichen/compiler/build/src/input/CMakeFiles/edit_cache.dir
+/home/ruichen/compiler/build/src/input/CMakeFiles/rebuild_cache.dir
+/home/ruichen/compiler/build/src/scanner/CMakeFiles/lox_scanner.dir
+/home/ruichen/compiler/build/src/scanner/CMakeFiles/edit_cache.dir
+/home/ruichen/compiler/build/src/scanner/CMakeFiles/rebuild_cache.dir
+/home/ruichen/compiler/build/src/core/CMakeFiles/lox_core.dir
+/home/ruichen/compiler/build/src/core/CMakeFiles/edit_cache.dir
+/home/ruichen/compiler/build/src/core/CMakeFiles/rebuild_cache.dir
+/home/ruichen/compiler/build/tools/CMakeFiles/lox_compiler.dir
+/home/ruichen/compiler/build/tools/CMakeFiles/edit_cache.dir
+/home/ruichen/compiler/build/tools/CMakeFiles/rebuild_cache.dir

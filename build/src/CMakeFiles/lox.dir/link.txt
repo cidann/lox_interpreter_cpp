@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../lib/liblox.a input/CMakeFiles/lox_input.dir/input.cpp.o scanner/CMakeFiles/lox_scanner.dir/scanner.cpp.o core/CMakeFiles/lox_core.dir/core.cpp.o
+/usr/bin/ranlib ../lib/liblox.a

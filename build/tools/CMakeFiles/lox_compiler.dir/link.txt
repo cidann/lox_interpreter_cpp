@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/lox_compiler.dir/lox.cpp.o -o ../bin/lox_compiler  ../lib/liblox.a 
