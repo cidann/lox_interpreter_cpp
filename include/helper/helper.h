@@ -2,5 +2,10 @@
 #pragma  once
 #include <string>
 
-void error(int line,std::string message);
-void report(int line, std::string where,std::string message);
+
+namespace lox {
+
+void Error(int line,const std::string &message);
+void Report(int line,const std::string &where,const std::string &message);
+
+}

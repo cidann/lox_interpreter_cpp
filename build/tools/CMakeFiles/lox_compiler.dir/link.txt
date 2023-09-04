@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/lox_compiler.dir/lox.cpp.o -o ../bin/lox_compiler  ../lib/liblox.a 
+/usr/bin/clang++ -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fstandalone-debug -fno-omit-frame-pointer -fno-optimize-sibling-calls CMakeFiles/lox_compiler.dir/lox.cpp.o -o ../bin/lox_compiler  ../lib/liblox.a 

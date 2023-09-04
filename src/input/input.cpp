@@ -8,8 +8,8 @@
 #include <filesystem>
 #include "core/core.h"
 
-
-void runPrompt(){
+namespace lox {
+void RunPrompt(){
     std::string line;
     while(true){
         std::cout<<"> ";
@@ -17,11 +17,11 @@ void runPrompt(){
             std::cout<<std::endl;
             return;
         }
-        run(line);
+        Run(line);
     }
 }
 
-void runFile(std::string file_name){
+void RunFile(const std::string &file_name){
     std::filesystem::path path{file_name};
     
     if(!std::filesystem::is_regular_file(path)){
@@ -32,7 +32,8 @@ void runFile(std::string file_name){
     std::stringstream sstream;
     sstream<<fin.rdbuf();
 
-    run(sstream.str());
+    Run(sstream.str());
     
 
 }
+}  // namespace lox

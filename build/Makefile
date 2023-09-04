@@ -169,6 +169,45 @@ lox_core/fast:
 .PHONY : lox_core/fast
 
 #=============================================================================
+# Target rules for targets named lox_helper
+
+# Build rule for target.
+lox_helper: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lox_helper
+.PHONY : lox_helper
+
+# fast build rule for target.
+lox_helper/fast:
+	$(MAKE) $(MAKESILENT) -f src/helper/CMakeFiles/lox_helper.dir/build.make src/helper/CMakeFiles/lox_helper.dir/build
+.PHONY : lox_helper/fast
+
+#=============================================================================
+# Target rules for targets named lox_symbol
+
+# Build rule for target.
+lox_symbol: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lox_symbol
+.PHONY : lox_symbol
+
+# fast build rule for target.
+lox_symbol/fast:
+	$(MAKE) $(MAKESILENT) -f src/symbol/CMakeFiles/lox_symbol.dir/build.make src/symbol/CMakeFiles/lox_symbol.dir/build
+.PHONY : lox_symbol/fast
+
+#=============================================================================
+# Target rules for targets named lox_expression
+
+# Build rule for target.
+lox_expression: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lox_expression
+.PHONY : lox_expression
+
+# fast build rule for target.
+lox_expression/fast:
+	$(MAKE) $(MAKESILENT) -f src/expression/CMakeFiles/lox_expression.dir/build.make src/expression/CMakeFiles/lox_expression.dir/build
+.PHONY : lox_expression/fast
+
+#=============================================================================
 # Target rules for targets named lox_compiler
 
 # Build rule for target.
@@ -181,6 +220,19 @@ lox_compiler/fast:
 	$(MAKE) $(MAKESILENT) -f tools/CMakeFiles/lox_compiler.dir/build.make tools/CMakeFiles/lox_compiler.dir/build
 .PHONY : lox_compiler/fast
 
+#=============================================================================
+# Target rules for targets named generate_ast
+
+# Build rule for target.
+generate_ast: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 generate_ast
+.PHONY : generate_ast
+
+# fast build rule for target.
+generate_ast/fast:
+	$(MAKE) $(MAKESILENT) -f tools/generator/CMakeFiles/generate_ast.dir/build.make tools/generator/CMakeFiles/generate_ast.dir/build
+.PHONY : generate_ast/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -189,11 +241,15 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... generate_ast"
 	@echo "... lox"
 	@echo "... lox_compiler"
 	@echo "... lox_core"
+	@echo "... lox_expression"
+	@echo "... lox_helper"
 	@echo "... lox_input"
 	@echo "... lox_scanner"
+	@echo "... lox_symbol"
 .PHONY : help
 
 

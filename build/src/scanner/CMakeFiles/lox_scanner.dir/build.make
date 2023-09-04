@@ -73,15 +73,15 @@ src/scanner/CMakeFiles/lox_scanner.dir/scanner.cpp.o: src/scanner/CMakeFiles/lox
 src/scanner/CMakeFiles/lox_scanner.dir/scanner.cpp.o: ../src/scanner/scanner.cpp
 src/scanner/CMakeFiles/lox_scanner.dir/scanner.cpp.o: src/scanner/CMakeFiles/lox_scanner.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/scanner/CMakeFiles/lox_scanner.dir/scanner.cpp.o"
-	cd /home/ruichen/compiler/build/src/scanner && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/scanner/CMakeFiles/lox_scanner.dir/scanner.cpp.o -MF CMakeFiles/lox_scanner.dir/scanner.cpp.o.d -o CMakeFiles/lox_scanner.dir/scanner.cpp.o -c /home/ruichen/compiler/src/scanner/scanner.cpp
+	cd /home/ruichen/compiler/build/src/scanner && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/scanner/CMakeFiles/lox_scanner.dir/scanner.cpp.o -MF CMakeFiles/lox_scanner.dir/scanner.cpp.o.d -o CMakeFiles/lox_scanner.dir/scanner.cpp.o -c /home/ruichen/compiler/src/scanner/scanner.cpp
 
 src/scanner/CMakeFiles/lox_scanner.dir/scanner.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lox_scanner.dir/scanner.cpp.i"
-	cd /home/ruichen/compiler/build/src/scanner && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruichen/compiler/src/scanner/scanner.cpp > CMakeFiles/lox_scanner.dir/scanner.cpp.i
+	cd /home/ruichen/compiler/build/src/scanner && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruichen/compiler/src/scanner/scanner.cpp > CMakeFiles/lox_scanner.dir/scanner.cpp.i
 
 src/scanner/CMakeFiles/lox_scanner.dir/scanner.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lox_scanner.dir/scanner.cpp.s"
-	cd /home/ruichen/compiler/build/src/scanner && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruichen/compiler/src/scanner/scanner.cpp -o CMakeFiles/lox_scanner.dir/scanner.cpp.s
+	cd /home/ruichen/compiler/build/src/scanner && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruichen/compiler/src/scanner/scanner.cpp -o CMakeFiles/lox_scanner.dir/scanner.cpp.s
 
 lox_scanner: src/scanner/CMakeFiles/lox_scanner.dir/scanner.cpp.o
 lox_scanner: src/scanner/CMakeFiles/lox_scanner.dir/build.make

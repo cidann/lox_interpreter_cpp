@@ -73,15 +73,15 @@ tools/CMakeFiles/lox_compiler.dir/lox.cpp.o: tools/CMakeFiles/lox_compiler.dir/f
 tools/CMakeFiles/lox_compiler.dir/lox.cpp.o: ../tools/lox.cpp
 tools/CMakeFiles/lox_compiler.dir/lox.cpp.o: tools/CMakeFiles/lox_compiler.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tools/CMakeFiles/lox_compiler.dir/lox.cpp.o"
-	cd /home/ruichen/compiler/build/tools && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tools/CMakeFiles/lox_compiler.dir/lox.cpp.o -MF CMakeFiles/lox_compiler.dir/lox.cpp.o.d -o CMakeFiles/lox_compiler.dir/lox.cpp.o -c /home/ruichen/compiler/tools/lox.cpp
+	cd /home/ruichen/compiler/build/tools && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tools/CMakeFiles/lox_compiler.dir/lox.cpp.o -MF CMakeFiles/lox_compiler.dir/lox.cpp.o.d -o CMakeFiles/lox_compiler.dir/lox.cpp.o -c /home/ruichen/compiler/tools/lox.cpp
 
 tools/CMakeFiles/lox_compiler.dir/lox.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lox_compiler.dir/lox.cpp.i"
-	cd /home/ruichen/compiler/build/tools && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruichen/compiler/tools/lox.cpp > CMakeFiles/lox_compiler.dir/lox.cpp.i
+	cd /home/ruichen/compiler/build/tools && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruichen/compiler/tools/lox.cpp > CMakeFiles/lox_compiler.dir/lox.cpp.i
 
 tools/CMakeFiles/lox_compiler.dir/lox.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lox_compiler.dir/lox.cpp.s"
-	cd /home/ruichen/compiler/build/tools && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruichen/compiler/tools/lox.cpp -o CMakeFiles/lox_compiler.dir/lox.cpp.s
+	cd /home/ruichen/compiler/build/tools && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruichen/compiler/tools/lox.cpp -o CMakeFiles/lox_compiler.dir/lox.cpp.s
 
 # Object files for target lox_compiler
 lox_compiler_OBJECTS = \

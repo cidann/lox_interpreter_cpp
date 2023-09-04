@@ -1,4 +1,9 @@
 #pragma once
 
 #include <string>
-void run(std::string s);
+
+namespace lox {
+
+void Run(const std::string& s);
+
+}

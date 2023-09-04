@@ -10,8 +10,8 @@ auto main(int argc, char **argv)->int{
         exit(64);
     } 
     else if (argc== 2) {
-        runFile(argv[1]);
+        lox::RunFile(argv[1]);
     } else {
-        runPrompt();
+        lox::RunPrompt();
     }
 }

@@ -1,3 +1,3 @@
-this is basic
-try to print
-hello world!
+// this is a comment
+(( )){} // grouping stuff
+!*+-/=<> <= == // operators

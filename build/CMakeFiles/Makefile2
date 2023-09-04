@@ -85,12 +85,18 @@ src/all: src/CMakeFiles/lox.dir/all
 src/all: src/input/all
 src/all: src/scanner/all
 src/all: src/core/all
+src/all: src/helper/all
+src/all: src/symbol/all
+src/all: src/expression/all
 .PHONY : src/all
 
 # Recursive "preinstall" directory target.
 src/preinstall: src/input/preinstall
 src/preinstall: src/scanner/preinstall
 src/preinstall: src/core/preinstall
+src/preinstall: src/helper/preinstall
+src/preinstall: src/symbol/preinstall
+src/preinstall: src/expression/preinstall
 .PHONY : src/preinstall
 
 # Recursive "clean" directory target.
@@ -98,6 +104,9 @@ src/clean: src/CMakeFiles/lox.dir/clean
 src/clean: src/input/clean
 src/clean: src/scanner/clean
 src/clean: src/core/clean
+src/clean: src/helper/clean
+src/clean: src/symbol/clean
+src/clean: src/expression/clean
 .PHONY : src/clean
 
 #=============================================================================
@@ -114,6 +123,36 @@ src/core/preinstall:
 # Recursive "clean" directory target.
 src/core/clean: src/core/CMakeFiles/lox_core.dir/clean
 .PHONY : src/core/clean
+
+#=============================================================================
+# Directory level rules for directory src/expression
+
+# Recursive "all" directory target.
+src/expression/all: src/expression/CMakeFiles/lox_expression.dir/all
+.PHONY : src/expression/all
+
+# Recursive "preinstall" directory target.
+src/expression/preinstall:
+.PHONY : src/expression/preinstall
+
+# Recursive "clean" directory target.
+src/expression/clean: src/expression/CMakeFiles/lox_expression.dir/clean
+.PHONY : src/expression/clean
+
+#=============================================================================
+# Directory level rules for directory src/helper
+
+# Recursive "all" directory target.
+src/helper/all: src/helper/CMakeFiles/lox_helper.dir/all
+.PHONY : src/helper/all
+
+# Recursive "preinstall" directory target.
+src/helper/preinstall:
+.PHONY : src/helper/preinstall
+
+# Recursive "clean" directory target.
+src/helper/clean: src/helper/CMakeFiles/lox_helper.dir/clean
+.PHONY : src/helper/clean
 
 #=============================================================================
 # Directory level rules for directory src/input
@@ -146,19 +185,51 @@ src/scanner/clean: src/scanner/CMakeFiles/lox_scanner.dir/clean
 .PHONY : src/scanner/clean
 
 #=============================================================================
+# Directory level rules for directory src/symbol
+
+# Recursive "all" directory target.
+src/symbol/all: src/symbol/CMakeFiles/lox_symbol.dir/all
+.PHONY : src/symbol/all
+
+# Recursive "preinstall" directory target.
+src/symbol/preinstall:
+.PHONY : src/symbol/preinstall
+
+# Recursive "clean" directory target.
+src/symbol/clean: src/symbol/CMakeFiles/lox_symbol.dir/clean
+.PHONY : src/symbol/clean
+
+#=============================================================================
 # Directory level rules for directory tools
 
 # Recursive "all" directory target.
 tools/all: tools/CMakeFiles/lox_compiler.dir/all
+tools/all: tools/generator/all
 .PHONY : tools/all
 
 # Recursive "preinstall" directory target.
-tools/preinstall:
+tools/preinstall: tools/generator/preinstall
 .PHONY : tools/preinstall
 
 # Recursive "clean" directory target.
 tools/clean: tools/CMakeFiles/lox_compiler.dir/clean
+tools/clean: tools/generator/clean
 .PHONY : tools/clean
+
+#=============================================================================
+# Directory level rules for directory tools/generator
+
+# Recursive "all" directory target.
+tools/generator/all: tools/generator/CMakeFiles/generate_ast.dir/all
+.PHONY : tools/generator/all
+
+# Recursive "preinstall" directory target.
+tools/generator/preinstall:
+.PHONY : tools/generator/preinstall
+
+# Recursive "clean" directory target.
+tools/generator/clean: tools/generator/CMakeFiles/generate_ast.dir/clean
+.PHONY : tools/generator/clean
 
 #=============================================================================
 # Target rules for target src/CMakeFiles/lox.dir
@@ -167,14 +238,18 @@ tools/clean: tools/CMakeFiles/lox_compiler.dir/clean
 src/CMakeFiles/lox.dir/all: src/input/CMakeFiles/lox_input.dir/all
 src/CMakeFiles/lox.dir/all: src/scanner/CMakeFiles/lox_scanner.dir/all
 src/CMakeFiles/lox.dir/all: src/core/CMakeFiles/lox_core.dir/all
+src/CMakeFiles/lox.dir/all: src/helper/CMakeFiles/lox_helper.dir/all
+src/CMakeFiles/lox.dir/all: src/symbol/CMakeFiles/lox_symbol.dir/all
+src/CMakeFiles/lox.dir/all: src/expression/CMakeFiles/lox_expression.dir/all
+src/CMakeFiles/lox.dir/all: tools/generator/CMakeFiles/generate_ast.dir/all
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/lox.dir/build.make src/CMakeFiles/lox.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/lox.dir/build.make src/CMakeFiles/lox.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=1 "Built target lox"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=2 "Built target lox"
 .PHONY : src/CMakeFiles/lox.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/lox.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruichen/compiler/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruichen/compiler/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/lox.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruichen/compiler/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/lox.dir/rule
@@ -195,7 +270,7 @@ src/CMakeFiles/lox.dir/clean:
 src/input/CMakeFiles/lox_input.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/input/CMakeFiles/lox_input.dir/build.make src/input/CMakeFiles/lox_input.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/input/CMakeFiles/lox_input.dir/build.make src/input/CMakeFiles/lox_input.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=5 "Built target lox_input"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=8 "Built target lox_input"
 .PHONY : src/input/CMakeFiles/lox_input.dir/all
 
 # Build rule for subdir invocation for target.
@@ -221,7 +296,7 @@ src/input/CMakeFiles/lox_input.dir/clean:
 src/scanner/CMakeFiles/lox_scanner.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/scanner/CMakeFiles/lox_scanner.dir/build.make src/scanner/CMakeFiles/lox_scanner.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/scanner/CMakeFiles/lox_scanner.dir/build.make src/scanner/CMakeFiles/lox_scanner.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=6 "Built target lox_scanner"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=9 "Built target lox_scanner"
 .PHONY : src/scanner/CMakeFiles/lox_scanner.dir/all
 
 # Build rule for subdir invocation for target.
@@ -247,7 +322,7 @@ src/scanner/CMakeFiles/lox_scanner.dir/clean:
 src/core/CMakeFiles/lox_core.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/lox_core.dir/build.make src/core/CMakeFiles/lox_core.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/core/CMakeFiles/lox_core.dir/build.make src/core/CMakeFiles/lox_core.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=4 "Built target lox_core"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=5 "Built target lox_core"
 .PHONY : src/core/CMakeFiles/lox_core.dir/all
 
 # Build rule for subdir invocation for target.
@@ -267,6 +342,84 @@ src/core/CMakeFiles/lox_core.dir/clean:
 .PHONY : src/core/CMakeFiles/lox_core.dir/clean
 
 #=============================================================================
+# Target rules for target src/helper/CMakeFiles/lox_helper.dir
+
+# All Build rule for target.
+src/helper/CMakeFiles/lox_helper.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/helper/CMakeFiles/lox_helper.dir/build.make src/helper/CMakeFiles/lox_helper.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/helper/CMakeFiles/lox_helper.dir/build.make src/helper/CMakeFiles/lox_helper.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=7 "Built target lox_helper"
+.PHONY : src/helper/CMakeFiles/lox_helper.dir/all
+
+# Build rule for subdir invocation for target.
+src/helper/CMakeFiles/lox_helper.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruichen/compiler/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/helper/CMakeFiles/lox_helper.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruichen/compiler/build/CMakeFiles 0
+.PHONY : src/helper/CMakeFiles/lox_helper.dir/rule
+
+# Convenience name for target.
+lox_helper: src/helper/CMakeFiles/lox_helper.dir/rule
+.PHONY : lox_helper
+
+# clean rule for target.
+src/helper/CMakeFiles/lox_helper.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/helper/CMakeFiles/lox_helper.dir/build.make src/helper/CMakeFiles/lox_helper.dir/clean
+.PHONY : src/helper/CMakeFiles/lox_helper.dir/clean
+
+#=============================================================================
+# Target rules for target src/symbol/CMakeFiles/lox_symbol.dir
+
+# All Build rule for target.
+src/symbol/CMakeFiles/lox_symbol.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/symbol/CMakeFiles/lox_symbol.dir/build.make src/symbol/CMakeFiles/lox_symbol.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/symbol/CMakeFiles/lox_symbol.dir/build.make src/symbol/CMakeFiles/lox_symbol.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=10 "Built target lox_symbol"
+.PHONY : src/symbol/CMakeFiles/lox_symbol.dir/all
+
+# Build rule for subdir invocation for target.
+src/symbol/CMakeFiles/lox_symbol.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruichen/compiler/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/symbol/CMakeFiles/lox_symbol.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruichen/compiler/build/CMakeFiles 0
+.PHONY : src/symbol/CMakeFiles/lox_symbol.dir/rule
+
+# Convenience name for target.
+lox_symbol: src/symbol/CMakeFiles/lox_symbol.dir/rule
+.PHONY : lox_symbol
+
+# clean rule for target.
+src/symbol/CMakeFiles/lox_symbol.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/symbol/CMakeFiles/lox_symbol.dir/build.make src/symbol/CMakeFiles/lox_symbol.dir/clean
+.PHONY : src/symbol/CMakeFiles/lox_symbol.dir/clean
+
+#=============================================================================
+# Target rules for target src/expression/CMakeFiles/lox_expression.dir
+
+# All Build rule for target.
+src/expression/CMakeFiles/lox_expression.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/expression/CMakeFiles/lox_expression.dir/build.make src/expression/CMakeFiles/lox_expression.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/expression/CMakeFiles/lox_expression.dir/build.make src/expression/CMakeFiles/lox_expression.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=6 "Built target lox_expression"
+.PHONY : src/expression/CMakeFiles/lox_expression.dir/all
+
+# Build rule for subdir invocation for target.
+src/expression/CMakeFiles/lox_expression.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruichen/compiler/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/expression/CMakeFiles/lox_expression.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruichen/compiler/build/CMakeFiles 0
+.PHONY : src/expression/CMakeFiles/lox_expression.dir/rule
+
+# Convenience name for target.
+lox_expression: src/expression/CMakeFiles/lox_expression.dir/rule
+.PHONY : lox_expression
+
+# clean rule for target.
+src/expression/CMakeFiles/lox_expression.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/expression/CMakeFiles/lox_expression.dir/build.make src/expression/CMakeFiles/lox_expression.dir/clean
+.PHONY : src/expression/CMakeFiles/lox_expression.dir/clean
+
+#=============================================================================
 # Target rules for target tools/CMakeFiles/lox_compiler.dir
 
 # All Build rule for target.
@@ -274,14 +427,17 @@ tools/CMakeFiles/lox_compiler.dir/all: src/CMakeFiles/lox.dir/all
 tools/CMakeFiles/lox_compiler.dir/all: src/input/CMakeFiles/lox_input.dir/all
 tools/CMakeFiles/lox_compiler.dir/all: src/scanner/CMakeFiles/lox_scanner.dir/all
 tools/CMakeFiles/lox_compiler.dir/all: src/core/CMakeFiles/lox_core.dir/all
+tools/CMakeFiles/lox_compiler.dir/all: src/helper/CMakeFiles/lox_helper.dir/all
+tools/CMakeFiles/lox_compiler.dir/all: src/symbol/CMakeFiles/lox_symbol.dir/all
+tools/CMakeFiles/lox_compiler.dir/all: src/expression/CMakeFiles/lox_expression.dir/all
 	$(MAKE) $(MAKESILENT) -f tools/CMakeFiles/lox_compiler.dir/build.make tools/CMakeFiles/lox_compiler.dir/depend
 	$(MAKE) $(MAKESILENT) -f tools/CMakeFiles/lox_compiler.dir/build.make tools/CMakeFiles/lox_compiler.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=2,3 "Built target lox_compiler"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=3,4 "Built target lox_compiler"
 .PHONY : tools/CMakeFiles/lox_compiler.dir/all
 
 # Build rule for subdir invocation for target.
 tools/CMakeFiles/lox_compiler.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruichen/compiler/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruichen/compiler/build/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/CMakeFiles/lox_compiler.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruichen/compiler/build/CMakeFiles 0
 .PHONY : tools/CMakeFiles/lox_compiler.dir/rule
@@ -294,6 +450,32 @@ lox_compiler: tools/CMakeFiles/lox_compiler.dir/rule
 tools/CMakeFiles/lox_compiler.dir/clean:
 	$(MAKE) $(MAKESILENT) -f tools/CMakeFiles/lox_compiler.dir/build.make tools/CMakeFiles/lox_compiler.dir/clean
 .PHONY : tools/CMakeFiles/lox_compiler.dir/clean
+
+#=============================================================================
+# Target rules for target tools/generator/CMakeFiles/generate_ast.dir
+
+# All Build rule for target.
+tools/generator/CMakeFiles/generate_ast.dir/all:
+	$(MAKE) $(MAKESILENT) -f tools/generator/CMakeFiles/generate_ast.dir/build.make tools/generator/CMakeFiles/generate_ast.dir/depend
+	$(MAKE) $(MAKESILENT) -f tools/generator/CMakeFiles/generate_ast.dir/build.make tools/generator/CMakeFiles/generate_ast.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=1 "Built target generate_ast"
+.PHONY : tools/generator/CMakeFiles/generate_ast.dir/all
+
+# Build rule for subdir invocation for target.
+tools/generator/CMakeFiles/generate_ast.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruichen/compiler/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/generator/CMakeFiles/generate_ast.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruichen/compiler/build/CMakeFiles 0
+.PHONY : tools/generator/CMakeFiles/generate_ast.dir/rule
+
+# Convenience name for target.
+generate_ast: tools/generator/CMakeFiles/generate_ast.dir/rule
+.PHONY : generate_ast
+
+# clean rule for target.
+tools/generator/CMakeFiles/generate_ast.dir/clean:
+	$(MAKE) $(MAKESILENT) -f tools/generator/CMakeFiles/generate_ast.dir/build.make tools/generator/CMakeFiles/generate_ast.dir/clean
+.PHONY : tools/generator/CMakeFiles/generate_ast.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

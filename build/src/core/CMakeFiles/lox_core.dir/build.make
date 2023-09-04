@@ -73,15 +73,15 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: src/core/CMakeFiles/lox_core.dir/fl
 src/core/CMakeFiles/lox_core.dir/core.cpp.o: ../src/core/core.cpp
 src/core/CMakeFiles/lox_core.dir/core.cpp.o: src/core/CMakeFiles/lox_core.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/core/CMakeFiles/lox_core.dir/core.cpp.o"
-	cd /home/ruichen/compiler/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/core/CMakeFiles/lox_core.dir/core.cpp.o -MF CMakeFiles/lox_core.dir/core.cpp.o.d -o CMakeFiles/lox_core.dir/core.cpp.o -c /home/ruichen/compiler/src/core/core.cpp
+	cd /home/ruichen/compiler/build/src/core && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/core/CMakeFiles/lox_core.dir/core.cpp.o -MF CMakeFiles/lox_core.dir/core.cpp.o.d -o CMakeFiles/lox_core.dir/core.cpp.o -c /home/ruichen/compiler/src/core/core.cpp
 
 src/core/CMakeFiles/lox_core.dir/core.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lox_core.dir/core.cpp.i"
-	cd /home/ruichen/compiler/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruichen/compiler/src/core/core.cpp > CMakeFiles/lox_core.dir/core.cpp.i
+	cd /home/ruichen/compiler/build/src/core && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruichen/compiler/src/core/core.cpp > CMakeFiles/lox_core.dir/core.cpp.i
 
 src/core/CMakeFiles/lox_core.dir/core.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lox_core.dir/core.cpp.s"
-	cd /home/ruichen/compiler/build/src/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruichen/compiler/src/core/core.cpp -o CMakeFiles/lox_core.dir/core.cpp.s
+	cd /home/ruichen/compiler/build/src/core && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruichen/compiler/src/core/core.cpp -o CMakeFiles/lox_core.dir/core.cpp.s
 
 lox_core: src/core/CMakeFiles/lox_core.dir/core.cpp.o
 lox_core: src/core/CMakeFiles/lox_core.dir/build.make

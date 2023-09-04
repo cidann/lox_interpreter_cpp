@@ -73,15 +73,15 @@ src/input/CMakeFiles/lox_input.dir/input.cpp.o: src/input/CMakeFiles/lox_input.d
 src/input/CMakeFiles/lox_input.dir/input.cpp.o: ../src/input/input.cpp
 src/input/CMakeFiles/lox_input.dir/input.cpp.o: src/input/CMakeFiles/lox_input.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/input/CMakeFiles/lox_input.dir/input.cpp.o"
-	cd /home/ruichen/compiler/build/src/input && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/input/CMakeFiles/lox_input.dir/input.cpp.o -MF CMakeFiles/lox_input.dir/input.cpp.o.d -o CMakeFiles/lox_input.dir/input.cpp.o -c /home/ruichen/compiler/src/input/input.cpp
+	cd /home/ruichen/compiler/build/src/input && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/input/CMakeFiles/lox_input.dir/input.cpp.o -MF CMakeFiles/lox_input.dir/input.cpp.o.d -o CMakeFiles/lox_input.dir/input.cpp.o -c /home/ruichen/compiler/src/input/input.cpp
 
 src/input/CMakeFiles/lox_input.dir/input.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lox_input.dir/input.cpp.i"
-	cd /home/ruichen/compiler/build/src/input && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruichen/compiler/src/input/input.cpp > CMakeFiles/lox_input.dir/input.cpp.i
+	cd /home/ruichen/compiler/build/src/input && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruichen/compiler/src/input/input.cpp > CMakeFiles/lox_input.dir/input.cpp.i
 
 src/input/CMakeFiles/lox_input.dir/input.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lox_input.dir/input.cpp.s"
-	cd /home/ruichen/compiler/build/src/input && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruichen/compiler/src/input/input.cpp -o CMakeFiles/lox_input.dir/input.cpp.s
+	cd /home/ruichen/compiler/build/src/input && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruichen/compiler/src/input/input.cpp -o CMakeFiles/lox_input.dir/input.cpp.s
 
 lox_input: src/input/CMakeFiles/lox_input.dir/input.cpp.o
 lox_input: src/input/CMakeFiles/lox_input.dir/build.make

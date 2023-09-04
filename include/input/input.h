@@ -2,7 +2,10 @@
 
 #include <string>
 
+namespace lox {
 
-void runPrompt();
+void RunPrompt();
 
-void runFile(std::string file_name);
+void RunFile(const std::string& file_name);
+
+} 

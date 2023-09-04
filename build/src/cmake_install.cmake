@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "")
+    set(CMAKE_INSTALL_CONFIG_NAME "Debug")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -47,6 +47,9 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/ruichen/compiler/build/src/input/cmake_install.cmake")
   include("/home/ruichen/compiler/build/src/scanner/cmake_install.cmake")
   include("/home/ruichen/compiler/build/src/core/cmake_install.cmake")
+  include("/home/ruichen/compiler/build/src/helper/cmake_install.cmake")
+  include("/home/ruichen/compiler/build/src/symbol/cmake_install.cmake")
+  include("/home/ruichen/compiler/build/src/expression/cmake_install.cmake")
 
 endif()
 
