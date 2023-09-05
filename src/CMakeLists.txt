@@ -4,6 +4,7 @@ add_subdirectory(core)
 add_subdirectory(helper)
 add_subdirectory(symbol)
 add_subdirectory(expression)
+add_subdirectory(parser)
 
 add_library(lox STATIC)
 
@@ -15,6 +16,7 @@ set(
     lox_helper
     lox_symbol
     lox_expression
+    lox_parser
 )
 
 

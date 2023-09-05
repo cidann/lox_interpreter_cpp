@@ -226,10 +226,16 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: ../src/core/core.cpp \
   /usr/include/c++/11/bits/locale_classes.h \
   /usr/include/c++/11/bits/locale_classes.tcc \
   /usr/include/c++/11/bits/streambuf.tcc \
-  ../include/expression/expression_visitor/print_visitor.h \
+  ../include/expression/expression_visitor/arithmetic_visitor.h \
   /usr/include/c++/11/any \
   ../include/expression/expression_visitor/expression_visitor.h \
-  ../include/scanner/scanner.h \
+  ../include/expression/expression_visitor/print_visitor.h \
+  ../include/parser/parser.h \
+  /usr/include/c++/11/vector \
+  /usr/include/c++/11/bits/stl_vector.h \
+  /usr/include/c++/11/bits/stl_bvector.h \
+  /usr/include/c++/11/bits/vector.tcc \
+  ../include/expression/expression.h \
   ../include/symbol/token.h \
   /usr/include/c++/11/unordered_map \
   /usr/include/c++/11/bits/hashtable.h \
@@ -240,10 +246,7 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: ../src/core/core.cpp \
   /usr/include/c++/11/bits/erase_if.h \
   /usr/include/c++/11/variant \
   /usr/include/c++/11/bits/parse_numbers.h \
-  /usr/include/c++/11/vector \
-  /usr/include/c++/11/bits/stl_vector.h \
-  /usr/include/c++/11/bits/stl_bvector.h \
-  /usr/include/c++/11/bits/vector.tcc \
+  ../include/scanner/scanner.h \
   /usr/include/c++/11/algorithm \
   /usr/include/c++/11/bits/stl_algo.h \
   /usr/include/c++/11/bits/algorithmfwd.h \
@@ -267,8 +270,8 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: ../src/core/core.cpp \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
+  ../include/expression/expression_headers.h \
   ../include/expression/BinaryExpression.h \
-  ../include/expression/expression.h \
   ../include/expression/GroupingExpression.h \
   ../include/expression/LiteralExpression.h \
   ../include/expression/UnaryExpression.h
@@ -294,6 +297,8 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: ../src/core/core.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
 
+/usr/include/c++/11/cwctype:
+
 /usr/include/c++/11/bits/string_view.tcc:
 
 /usr/include/c++/11/bits/functional_hash.h:
@@ -309,10 +314,6 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: ../src/core/core.cpp \
 /usr/include/strings.h:
 
 /usr/include/c++/11/cstdlib:
-
-../include/expression/expression.h:
-
-/usr/include/c++/11/bits/stl_iterator_base_types.h:
 
 /usr/include/c++/11/tr1/poly_laguerre.tcc:
 
@@ -337,6 +338,10 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: ../src/core/core.cpp \
 /usr/include/c++/11/ext/atomicity.h:
 
 /usr/include/c++/11/bits/stl_pair.h:
+
+/usr/include/c++/11/bits/stl_iterator_base_types.h:
+
+../include/expression/expression.h:
 
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
@@ -379,8 +384,6 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: ../src/core/core.cpp \
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
 /usr/include/c++/11/bits/localefwd.h:
-
-/usr/include/c++/11/tr1/hypergeometric.tcc:
 
 /usr/include/x86_64-linux-gnu/sys/select.h:
 
@@ -436,6 +439,8 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: ../src/core/core.cpp \
 
 /usr/include/features.h:
 
+../include/expression/expression_headers.h:
+
 /usr/include/c++/11/bits/locale_facets.tcc:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
@@ -465,6 +470,10 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: ../src/core/core.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
 
 /usr/include/c++/11/bits/ostream_insert.h:
+
+/usr/include/c++/11/bits/locale_facets.h:
+
+/usr/include/c++/11/bits/exception.h:
 
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
 
@@ -564,6 +573,10 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: ../src/core/core.cpp \
 
 /usr/include/c++/11/bits/cxxabi_init_exception.h:
 
+/usr/include/c++/11/bits/basic_ios.h:
+
+/usr/include/c++/11/bits/uniform_int_dist.h:
+
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
@@ -609,6 +622,10 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: ../src/core/core.cpp \
 /usr/include/c++/11/cstdio:
 
 /usr/include/stdio.h:
+
+/usr/include/c++/11/tr1/hypergeometric.tcc:
+
+../include/expression/expression_visitor/arithmetic_visitor.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
 
@@ -696,10 +713,6 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: ../src/core/core.cpp \
 
 /usr/include/c++/11/tr1/poly_hermite.tcc:
 
-/usr/include/c++/11/bits/exception.h:
-
-/usr/include/c++/11/bits/locale_facets.h:
-
 /usr/include/c++/11/tr1/riemann_zeta.tcc:
 
 /usr/include/c++/11/memory:
@@ -764,17 +777,23 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: ../src/core/core.cpp \
 
 /usr/include/c++/11/bits/streambuf_iterator.h:
 
-/usr/include/c++/11/ext/string_conversions.h:
-
-../include/expression/expression_visitor/print_visitor.h:
-
 /usr/include/c++/11/bits/unique_ptr.h:
 
 /usr/include/c++/11/any:
 
 ../include/expression/expression_visitor/expression_visitor.h:
 
-../include/scanner/scanner.h:
+/usr/include/c++/11/ext/string_conversions.h:
+
+../include/expression/expression_visitor/print_visitor.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+
+/usr/include/c++/11/bits/stl_bvector.h:
+
+/usr/include/c++/11/bits/vector.tcc:
 
 /usr/include/c++/11/bits/hashtable.h:
 
@@ -794,13 +813,9 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: ../src/core/core.cpp \
 
 /usr/include/c++/11/variant:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
+../include/parser/parser.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
-
-/usr/include/c++/11/bits/stl_bvector.h:
-
-/usr/include/c++/11/bits/vector.tcc:
+../include/scanner/scanner.h:
 
 /usr/include/c++/11/pstl/execution_defs.h:
 
@@ -809,9 +824,3 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: ../src/core/core.cpp \
 /usr/include/c++/11/bits/std_abs.h:
 
 /usr/include/c++/11/bits/stl_heap.h:
-
-/usr/include/c++/11/bits/uniform_int_dist.h:
-
-/usr/include/c++/11/bits/basic_ios.h:
-
-/usr/include/c++/11/cwctype:

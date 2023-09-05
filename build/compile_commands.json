@@ -30,6 +30,16 @@
   "file": "/home/ruichen/compiler/src/expression/print_visitor.cpp"
 },
 {
+  "directory": "/home/ruichen/compiler/build/src/expression",
+  "command": "/usr/bin/clang++  -I/home/ruichen/compiler/include -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fstandalone-debug -fno-omit-frame-pointer -fno-optimize-sibling-calls -fPIC -std=gnu++17 -o CMakeFiles/lox_expression.dir/arithmetic_visitor.cpp.o -c /home/ruichen/compiler/src/expression/arithmetic_visitor.cpp",
+  "file": "/home/ruichen/compiler/src/expression/arithmetic_visitor.cpp"
+},
+{
+  "directory": "/home/ruichen/compiler/build/src/parser",
+  "command": "/usr/bin/clang++  -I/home/ruichen/compiler/include -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fstandalone-debug -fno-omit-frame-pointer -fno-optimize-sibling-calls -fPIC -std=gnu++17 -o CMakeFiles/lox_parser.dir/parser.cpp.o -c /home/ruichen/compiler/src/parser/parser.cpp",
+  "file": "/home/ruichen/compiler/src/parser/parser.cpp"
+},
+{
   "directory": "/home/ruichen/compiler/build/tools",
   "command": "/usr/bin/clang++  -I/home/ruichen/compiler/include -I/home/ruichen/compiler/src/LOX_INCLUDE_DIR -g -Wall -Wextra -Werror -Wno-unused-parameter -Wno-attributes -O0 -ggdb -fstandalone-debug -fno-omit-frame-pointer -fno-optimize-sibling-calls -fPIE -std=gnu++17 -o CMakeFiles/lox_compiler.dir/lox.cpp.o -c /home/ruichen/compiler/tools/lox.cpp",
   "file": "/home/ruichen/compiler/tools/lox.cpp"

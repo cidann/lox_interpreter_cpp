@@ -79,7 +79,9 @@ lox_EXTERNAL_OBJECTS = \
 "/home/ruichen/compiler/build/src/core/CMakeFiles/lox_core.dir/core.cpp.o" \
 "/home/ruichen/compiler/build/src/helper/CMakeFiles/lox_helper.dir/helper.cpp.o" \
 "/home/ruichen/compiler/build/src/symbol/CMakeFiles/lox_symbol.dir/token.cpp.o" \
-"/home/ruichen/compiler/build/src/expression/CMakeFiles/lox_expression.dir/print_visitor.cpp.o"
+"/home/ruichen/compiler/build/src/expression/CMakeFiles/lox_expression.dir/print_visitor.cpp.o" \
+"/home/ruichen/compiler/build/src/expression/CMakeFiles/lox_expression.dir/arithmetic_visitor.cpp.o" \
+"/home/ruichen/compiler/build/src/parser/CMakeFiles/lox_parser.dir/parser.cpp.o"
 
 lib/liblox.a: src/input/CMakeFiles/lox_input.dir/input.cpp.o
 lib/liblox.a: src/scanner/CMakeFiles/lox_scanner.dir/scanner.cpp.o
@@ -87,6 +89,8 @@ lib/liblox.a: src/core/CMakeFiles/lox_core.dir/core.cpp.o
 lib/liblox.a: src/helper/CMakeFiles/lox_helper.dir/helper.cpp.o
 lib/liblox.a: src/symbol/CMakeFiles/lox_symbol.dir/token.cpp.o
 lib/liblox.a: src/expression/CMakeFiles/lox_expression.dir/print_visitor.cpp.o
+lib/liblox.a: src/expression/CMakeFiles/lox_expression.dir/arithmetic_visitor.cpp.o
+lib/liblox.a: src/parser/CMakeFiles/lox_parser.dir/parser.cpp.o
 lib/liblox.a: src/CMakeFiles/lox.dir/build.make
 lib/liblox.a: src/CMakeFiles/lox.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ruichen/compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Linking CXX static library ../lib/liblox.a"

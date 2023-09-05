@@ -50,6 +50,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/ruichen/compiler/build/src/helper/cmake_install.cmake")
   include("/home/ruichen/compiler/build/src/symbol/cmake_install.cmake")
   include("/home/ruichen/compiler/build/src/expression/cmake_install.cmake")
+  include("/home/ruichen/compiler/build/src/parser/cmake_install.cmake")
 
 endif()
 

@@ -208,6 +208,19 @@ lox_expression/fast:
 .PHONY : lox_expression/fast
 
 #=============================================================================
+# Target rules for targets named lox_parser
+
+# Build rule for target.
+lox_parser: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lox_parser
+.PHONY : lox_parser
+
+# fast build rule for target.
+lox_parser/fast:
+	$(MAKE) $(MAKESILENT) -f src/parser/CMakeFiles/lox_parser.dir/build.make src/parser/CMakeFiles/lox_parser.dir/build
+.PHONY : lox_parser/fast
+
+#=============================================================================
 # Target rules for targets named lox_compiler
 
 # Build rule for target.
@@ -248,6 +261,7 @@ help:
 	@echo "... lox_expression"
 	@echo "... lox_helper"
 	@echo "... lox_input"
+	@echo "... lox_parser"
 	@echo "... lox_scanner"
 	@echo "... lox_symbol"
 .PHONY : help

@@ -16,6 +16,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../src/expression/CMakeLists.txt"
   "../src/helper/CMakeLists.txt"
   "../src/input/CMakeLists.txt"
+  "../src/parser/CMakeLists.txt"
   "../src/scanner/CMakeLists.txt"
   "../src/symbol/CMakeLists.txt"
   "../tools/CMakeLists.txt"
@@ -71,6 +72,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/helper/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/symbol/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/expression/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/parser/CMakeFiles/CMakeDirectoryInformation.cmake"
   "tools/CMakeFiles/CMakeDirectoryInformation.cmake"
   "tools/generator/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
@@ -84,6 +86,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/helper/CMakeFiles/lox_helper.dir/DependInfo.cmake"
   "src/symbol/CMakeFiles/lox_symbol.dir/DependInfo.cmake"
   "src/expression/CMakeFiles/lox_expression.dir/DependInfo.cmake"
+  "src/parser/CMakeFiles/lox_parser.dir/DependInfo.cmake"
   "tools/CMakeFiles/lox_compiler.dir/DependInfo.cmake"
   "tools/generator/CMakeFiles/generate_ast.dir/DependInfo.cmake"
   )

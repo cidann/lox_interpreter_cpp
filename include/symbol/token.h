@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <memory>
 #include <string>
 #include <unordered_map>
 #include <utility>
@@ -47,10 +48,26 @@ class Literal{
         if(std::holds_alternative<int64_t>(value_)){
             return std::to_string(std::get<int64_t>(value_));
         }
-        if(std::holds_alternative<std::string>(value_)){
+        if(std::holds_alternative<double>(value_)){
             return std::to_string(std::get<double>(value_));
         }
         return "nil";
+    }
+
+    auto ToDouble()->double{
+        if(std::holds_alternative<std::string>(value_)){
+            return std::stod(std::get<std::string>(value_));
+        }
+        if(std::holds_alternative<bool>(value_)){
+            return std::get<bool>(value_)? 1:0;
+        }
+        if(std::holds_alternative<int64_t>(value_)){
+            return std::stod(std::to_string(std::get<int64_t>(value_)));
+        }
+        if(std::holds_alternative<double>(value_)){
+            return std::get<double>(value_);
+        }
+        return 0;
     }
     std::variant<std::string,bool,int64_t,double,std::monostate> value_;
 };
@@ -86,7 +103,11 @@ class Token{
     };
 
     Token(TokenType type,std::string lexeme,int line);
+    Token(TokenType type,std::string lexeme,Literal literal,int line);
+    Token(Token &&token)=default;
+    Token(const Token &token)=default;
     
+
     auto ToString()->std::string;
 
 
@@ -95,5 +116,6 @@ class Token{
     Literal literal_;
     int line_; 
 };
+
 
 }  // namespace lox

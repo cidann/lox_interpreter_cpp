@@ -8,6 +8,7 @@
 #include <utility>
 #include "helper/helper.h"
 #include "symbol/token.h"
+#include <fmt/format.h>
 
 namespace lox {
     
@@ -77,7 +78,9 @@ void Scanner::ScanToken(){
             } else if (std::isalpha(c)!=0) {
                 ScanIdentifier();
             }
-            Error(line_, "Unexpected character.");
+            else{
+                Error(line_, fmt::format("Unexpected character {}.",c));
+            }
             break;
     }
 }
@@ -97,7 +100,7 @@ void Scanner::ScanString(){
     Next();
     // Trim the surrounding quotes.
     std::string value{start_ + 1, current_ - 1};
-    tokens_.emplace_back(TokenType::STRING, value,line_);
+    tokens_.emplace_back(TokenType::STRING, value,Literal{value},line_);
 }
 
 void Scanner::ScanNumber(){
@@ -113,7 +116,8 @@ void Scanner::ScanNumber(){
             Next();
         }
     }
-    tokens_.emplace_back(TokenType::NUMBER,std::string{start_, current_},line_);
+    std::string num{start_, current_};
+    tokens_.emplace_back(TokenType::NUMBER,num,Literal{std::stod(num)},line_);
     
 }
 

@@ -1,0 +1,307 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						9
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "src",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8
+					],
+					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "src/input",
+					"jsonFile" : "directory-src.input-Debug-f22e018e3cef74fb719b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/input",
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"build" : "src/scanner",
+					"jsonFile" : "directory-src.scanner-Debug-4a2500b726b31effe954.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/scanner",
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"build" : "src/core",
+					"jsonFile" : "directory-src.core-Debug-36daa2e54a8600f0fb49.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/core",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "src/helper",
+					"jsonFile" : "directory-src.helper-Debug-9948f8542ea951b01703.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/helper",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "src/symbol",
+					"jsonFile" : "directory-src.symbol-Debug-c17baeba4c9449abb8bd.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/symbol",
+					"targetIndexes" : 
+					[
+						9
+					]
+				},
+				{
+					"build" : "src/expression",
+					"jsonFile" : "directory-src.expression-Debug-23fd392154500afb14ee.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/expression",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "src/parser",
+					"jsonFile" : "directory-src.parser-Debug-835a6c999973ddba8433.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/parser",
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"build" : "tools",
+					"childIndexes" : 
+					[
+						10
+					],
+					"jsonFile" : "directory-tools-Debug-f9645b0170a45a75eff2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "tools",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "tools/generator",
+					"jsonFile" : "directory-tools.generator-Debug-7d67787ee4638150bf4d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 9,
+					"projectIndex" : 0,
+					"source" : "tools/generator",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10
+					],
+					"name" : "Lox",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 10,
+					"id" : "generate_ast::@f52256c9dc8ea71da1c3",
+					"jsonFile" : "target-generate_ast-Debug-6394b7be3bd36b026222.json",
+					"name" : "generate_ast",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "lox::@145eef247bfb46b6828c",
+					"jsonFile" : "target-lox-Debug-1e8cb89fad74d9f8e6c7.json",
+					"name" : "lox",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "lox_compiler::@b9a00e55f22b3d77656c",
+					"jsonFile" : "target-lox_compiler-Debug-bcf981d036e77bfab8ac.json",
+					"name" : "lox_compiler",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "lox_core::@0618756b1ff51bca1a0e",
+					"jsonFile" : "target-lox_core-Debug-49d979ca497779775e68.json",
+					"name" : "lox_core",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "lox_expression::@ff8971ea8193d1a5b297",
+					"jsonFile" : "target-lox_expression-Debug-a206a61136341cba9661.json",
+					"name" : "lox_expression",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "lox_helper::@c571387905d3ed4e6919",
+					"jsonFile" : "target-lox_helper-Debug-330940fe4e58ab749d1a.json",
+					"name" : "lox_helper",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "lox_input::@fbb2a56cb88dc49cea17",
+					"jsonFile" : "target-lox_input-Debug-d2cec83f712ee86dc63a.json",
+					"name" : "lox_input",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "lox_parser::@980325688ee7b2ed96bc",
+					"jsonFile" : "target-lox_parser-Debug-d8dfa4800ed941704109.json",
+					"name" : "lox_parser",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "lox_scanner::@e05799d1961e1e02bdb0",
+					"jsonFile" : "target-lox_scanner-Debug-3b170e06780aff5d65b2.json",
+					"name" : "lox_scanner",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "lox_symbol::@3b33562d6b3210ed8773",
+					"jsonFile" : "target-lox_symbol-Debug-70f4bd1c86d74418062c.json",
+					"name" : "lox_symbol",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ruichen/compiler/build",
+		"source" : "/home/ruichen/compiler"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

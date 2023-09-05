@@ -1,0 +1,24 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug",
+            "program": "${workspaceFolder}/build/bin/lox_compiler",
+            "args": ["${workspaceFolder}/test/test_file/test1"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "Debug python generator",
+            "program": "${file}",
+            "args": ["${workspaceFolder}/include/expression"],
+            
+        }
+    ]
+}

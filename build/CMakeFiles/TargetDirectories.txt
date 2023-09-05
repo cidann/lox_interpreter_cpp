@@ -21,6 +21,9 @@
 /home/ruichen/compiler/build/src/expression/CMakeFiles/lox_expression.dir
 /home/ruichen/compiler/build/src/expression/CMakeFiles/edit_cache.dir
 /home/ruichen/compiler/build/src/expression/CMakeFiles/rebuild_cache.dir
+/home/ruichen/compiler/build/src/parser/CMakeFiles/lox_parser.dir
+/home/ruichen/compiler/build/src/parser/CMakeFiles/edit_cache.dir
+/home/ruichen/compiler/build/src/parser/CMakeFiles/rebuild_cache.dir
 /home/ruichen/compiler/build/tools/CMakeFiles/lox_compiler.dir
 /home/ruichen/compiler/build/tools/CMakeFiles/edit_cache.dir
 /home/ruichen/compiler/build/tools/CMakeFiles/rebuild_cache.dir

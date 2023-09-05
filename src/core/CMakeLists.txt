@@ -3,3 +3,5 @@ add_library(
     OBJECT
     core.cpp
 )
+
+target_link_libraries(lox_core lox_parser)

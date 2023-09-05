@@ -210,10 +210,16 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_classes.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_classes.tcc \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/streambuf.tcc \
-  /home/ruichen/compiler/include/expression/expression_visitor/print_visitor.h \
+  /home/ruichen/compiler/include/expression/expression_visitor/arithmetic_visitor.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/any \
   /home/ruichen/compiler/include/expression/expression_visitor/expression_visitor.h \
-  /home/ruichen/compiler/include/scanner/scanner.h \
+  /home/ruichen/compiler/include/expression/expression_visitor/print_visitor.h \
+  /home/ruichen/compiler/include/parser/parser.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/vector \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_bvector.h \
+  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/vector.tcc \
+  /home/ruichen/compiler/include/expression/expression.h \
   /home/ruichen/compiler/include/symbol/token.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/unordered_map \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/hashtable.h \
@@ -224,10 +230,7 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/erase_if.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/variant \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/parse_numbers.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/vector \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_bvector.h \
-  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/vector.tcc \
+  /home/ruichen/compiler/include/scanner/scanner.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/algorithm \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_algo.h \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/algorithmfwd.h \
@@ -251,8 +254,8 @@ src/core/CMakeFiles/lox_core.dir/core.cpp.o: \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ostream.tcc \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/istream \
   /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/istream.tcc \
+  /home/ruichen/compiler/include/expression/expression_headers.h \
   /home/ruichen/compiler/include/expression/BinaryExpression.h \
-  /home/ruichen/compiler/include/expression/expression.h \
   /home/ruichen/compiler/include/expression/GroupingExpression.h \
   /home/ruichen/compiler/include/expression/LiteralExpression.h \
   /home/ruichen/compiler/include/expression/UnaryExpression.h

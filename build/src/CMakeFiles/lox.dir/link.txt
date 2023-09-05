@@ -1,2 +1,2 @@
-/usr/bin/ar qc ../lib/liblox.a input/CMakeFiles/lox_input.dir/input.cpp.o scanner/CMakeFiles/lox_scanner.dir/scanner.cpp.o core/CMakeFiles/lox_core.dir/core.cpp.o helper/CMakeFiles/lox_helper.dir/helper.cpp.o symbol/CMakeFiles/lox_symbol.dir/token.cpp.o expression/CMakeFiles/lox_expression.dir/print_visitor.cpp.o
+/usr/bin/ar qc ../lib/liblox.a input/CMakeFiles/lox_input.dir/input.cpp.o scanner/CMakeFiles/lox_scanner.dir/scanner.cpp.o core/CMakeFiles/lox_core.dir/core.cpp.o helper/CMakeFiles/lox_helper.dir/helper.cpp.o symbol/CMakeFiles/lox_symbol.dir/token.cpp.o expression/CMakeFiles/lox_expression.dir/print_visitor.cpp.o expression/CMakeFiles/lox_expression.dir/arithmetic_visitor.cpp.o parser/CMakeFiles/lox_parser.dir/parser.cpp.o
 /usr/bin/ranlib ../lib/liblox.a
