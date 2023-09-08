@@ -6,7 +6,7 @@
 
 namespace lox {
 
-class BinaryExpression:public AbstractExpression{
+class BinaryExpressionTest:public AbstractExpression{
     public:
     auto Accept(const ExpressionVisitor<std::any> &visitor)->std::any override{
         return visitor.Visit(*this);

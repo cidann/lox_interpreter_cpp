@@ -11,17 +11,17 @@
 
 namespace lox {
 
-class LiteralExpression:public AbstractExpression{
+class VariableExpression:public AbstractExpression{
     public:
     auto Accept(const ExpressionVisitor<LoxTypes> &visitor)->LoxTypes override{
         return visitor.Visit(*this);
     }
-    explicit LiteralExpression(
-        std::unique_ptr<Token> value_
-    ):value_(std::move(value_)){}
-    ~LiteralExpression()override=default;
+    explicit VariableExpression(
+        std::unique_ptr<Token> name_
+    ):name_(std::move(name_)){}
+    ~VariableExpression()override=default;
     
-    std::unique_ptr<Token> value_;
+    std::unique_ptr<Token> name_;
 };
 
 }  // namespace lox

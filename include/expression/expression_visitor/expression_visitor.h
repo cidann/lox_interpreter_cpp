@@ -8,6 +8,8 @@ class BinaryExpression;
 class GroupingExpression;
 class LiteralExpression;
 class UnaryExpression;
+class VariableExpression;
+class AssignExpression;
 
 template<typename T>
 class ExpressionVisitor{
@@ -17,6 +19,8 @@ class ExpressionVisitor{
         virtual auto Visit(GroupingExpression &exp)const->T=0;
         virtual auto Visit(LiteralExpression &exp)const->T=0;
         virtual auto Visit(UnaryExpression &exp)const->T=0;
+        virtual auto Visit(VariableExpression &exp)const->T=0;
+        virtual auto Visit(AssignExpression &exp)const->T=0;
 
         virtual ~ExpressionVisitor<T>()=default;
         

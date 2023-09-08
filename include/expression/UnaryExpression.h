@@ -2,15 +2,18 @@
 #pragma once
 
 #include <memory>
+#include "statement/statement.h"
 #include "expression/expression.h"
 #include "symbol/token.h"
 #include <any>
+#include <vector>
+#include "parser/parser.h"
 
 namespace lox {
 
 class UnaryExpression:public AbstractExpression{
     public:
-    auto Accept(const ExpressionVisitor<std::any> &visitor)->std::any override{
+    auto Accept(const ExpressionVisitor<LoxTypes> &visitor)->LoxTypes override{
         return visitor.Visit(*this);
     }
     explicit UnaryExpression(

@@ -11,15 +11,15 @@
 
 namespace lox {
 
-class GroupingExpression:public AbstractExpression{
+class PrintStatement:public AbstractStatement{
     public:
-    auto Accept(const ExpressionVisitor<LoxTypes> &visitor)->LoxTypes override{
+    auto Accept(const StatementVisitor<LoxTypes> &visitor)->LoxTypes override{
         return visitor.Visit(*this);
     }
-    explicit GroupingExpression(
+    explicit PrintStatement(
         std::unique_ptr<AbstractExpression> expression_
     ):expression_(std::move(expression_)){}
-    ~GroupingExpression()override=default;
+    ~PrintStatement()override=default;
     
     std::unique_ptr<AbstractExpression> expression_;
 };

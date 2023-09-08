@@ -17,7 +17,7 @@
             "request": "launch",
             "name": "Debug python generator",
             "program": "${file}",
-            "args": ["${workspaceFolder}/include/expression"],
+            "args": ["${workspaceFolder}/include","expression"],
             
         }
     ]

@@ -1,4 +1,4 @@
-
+#define FMT_HEADER_ONLY
 #include "scanner/scanner.h"
 
 #include <cctype>
@@ -61,6 +61,9 @@ void Scanner::ScanToken(){
                 AddToken(TokenType::SLASH);
             }
             break;
+        case '"':
+            ScanString();
+            break;
 
         
         // Ignore whitespace.
@@ -100,16 +103,18 @@ void Scanner::ScanString(){
     Next();
     // Trim the surrounding quotes.
     std::string value{start_ + 1, current_ - 1};
-    tokens_.emplace_back(TokenType::STRING, value,Literal{value},line_);
+    tokens_.emplace_back(TokenType::STRING, value,LoxTypes{value},line_);
 }
 
 void Scanner::ScanNumber(){
+    bool is_double=false;
     while (std::isdigit(Peek()) != 0) {
         Next();
     }
     // Look for a fractional part.
     if (Peek() == '.' && std::isdigit(PeekNext())!=0) {
         // Consume the "."
+        is_double=true;
         Next();
 
         while (std::isdigit(Peek())!=0){ 
@@ -117,8 +122,12 @@ void Scanner::ScanNumber(){
         }
     }
     std::string num{start_, current_};
-    tokens_.emplace_back(TokenType::NUMBER,num,Literal{std::stod(num)},line_);
-    
+    if(is_double){
+        tokens_.emplace_back(TokenType::NUMBER,num,LoxTypes{std::stod(num)},line_);
+    }
+    else{
+        tokens_.emplace_back(TokenType::NUMBER,num,LoxTypes{std::stoll(num)},line_);
+    }
 }
 
 void Scanner::ScanIdentifier(){

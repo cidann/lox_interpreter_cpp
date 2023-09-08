@@ -3,8 +3,9 @@ add_subdirectory(scanner)
 add_subdirectory(core)
 add_subdirectory(helper)
 add_subdirectory(symbol)
-add_subdirectory(expression)
+add_subdirectory(visitor)
 add_subdirectory(parser)
+add_subdirectory(interpreter)
 
 add_library(lox STATIC)
 
@@ -15,8 +16,9 @@ set(
     lox_core
     lox_helper
     lox_symbol
-    lox_expression
+    lox_visitor
     lox_parser
+    lox_interpreter
 )
 
 

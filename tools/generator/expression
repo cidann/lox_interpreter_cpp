@@ -1,0 +1,6 @@
+BinaryExpression # AbstractExpression left, Token operator, AbstractExpression right
+GroupingExpression # AbstractExpression expression
+LiteralExpression # Token value
+UnaryExpression # Token operator, AbstractExpression right
+VariableExpression # Token name
+AssignExpression# Token name, AbstractExpression expression

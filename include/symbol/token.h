@@ -1,15 +1,19 @@
 #pragma once
 
 #include <array>
+#include <cstdint>
 #include <memory>
 #include <string>
 #include <unordered_map>
 #include <utility>
 #include <variant>
+
+
 #undef EOF
 
 namespace lox {
-
+class LoxLiterals;
+using LoxTypes=std::variant<std::string,bool,int64_t,double,std::monostate>;
 enum class TokenType{
     // Single-character tokens.
     LEFT_PAREN=0, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,
@@ -31,46 +35,24 @@ enum class TokenType{
     count
 };
 
-class Literal{
+/*
+class LoxTypes{
     public:
-    Literal():value_(std::monostate{}){}
-    explicit Literal(
-        std::variant<std::string,bool,int64_t,double,std::monostate> val
+    LoxTypes():value_(std::monostate{}){}
+    explicit LoxTypes(
+        LoxLiterals val
     ):value_(std::move(val)){}
     
-    auto ToString()->std::string{
-        if(std::holds_alternative<std::string>(value_)){
-            return std::get<std::string>(value_);
-        }
-        if(std::holds_alternative<bool>(value_)){
-            return std::get<bool>(value_)? "true":"false";
-        }
-        if(std::holds_alternative<int64_t>(value_)){
-            return std::to_string(std::get<int64_t>(value_));
-        }
-        if(std::holds_alternative<double>(value_)){
-            return std::to_string(std::get<double>(value_));
-        }
-        return "nil";
-    }
+    auto Add(const LoxTypes &other,const Token &tok)->LoxTypes;
 
-    auto ToDouble()->double{
-        if(std::holds_alternative<std::string>(value_)){
-            return std::stod(std::get<std::string>(value_));
-        }
-        if(std::holds_alternative<bool>(value_)){
-            return std::get<bool>(value_)? 1:0;
-        }
-        if(std::holds_alternative<int64_t>(value_)){
-            return std::stod(std::to_string(std::get<int64_t>(value_)));
-        }
-        if(std::holds_alternative<double>(value_)){
-            return std::get<double>(value_);
-        }
-        return 0;
-    }
-    std::variant<std::string,bool,int64_t,double,std::monostate> value_;
+    static auto ToString(const LoxTypes& value)->std::string;
+
+    static auto ToDouble(const LoxTypes& value)->double;
+    static auto ToInt(const LoxTypes& value)->int64_t;
+
+    LoxLiterals value_;
 };
+*/
 
 class Token{
     public:
@@ -103,7 +85,7 @@ class Token{
     };
 
     Token(TokenType type,std::string lexeme,int line);
-    Token(TokenType type,std::string lexeme,Literal literal,int line);
+    Token(TokenType type,std::string lexeme,LoxTypes literal,int line);
     Token(Token &&token)=default;
     Token(const Token &token)=default;
     
@@ -113,7 +95,7 @@ class Token{
 
     TokenType type_;
     std::string lexeme_;
-    Literal literal_;
+    LoxTypes literal_;
     int line_; 
 };
 

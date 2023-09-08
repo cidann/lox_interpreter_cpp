@@ -1,6 +1,8 @@
+#define FMT_HEADER_ONLY
 #include "core/core.h"
 #include <fmt/format.h>
 #include "expression/expression_visitor/arithmetic_visitor.h"
+#include "interpreter/interpreter.h"
 #include "expression/expression_visitor/print_visitor.h"
 #include "parser/parser.h"
 #include "scanner/scanner.h"
@@ -23,9 +25,8 @@ void Run(const std::string& s){
     
 
     Parser parser{tokens};
-    auto tree=parser.Expression();
-    std::cout<<std::any_cast<std::string>(tree->Accept(PrintVisitor{}))<<std::endl;
-    std::cout<<std::any_cast<double>(tree->Accept(ArithmeticVisitor{}))<<std::endl;
-
+    Interpreter interpreter;
+    auto statements=parser.Parse();
+    auto result=interpreter.Interpret(statements);
 }
 }  // namespace lox

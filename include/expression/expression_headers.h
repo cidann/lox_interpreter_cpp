@@ -1,5 +1,7 @@
 #pragma once
-#include "BinaryExpression.h"
-#include "GroupingExpression.h"
-#include "LiteralExpression.h"
-#include "UnaryExpression.h"
+#include "expression/BinaryExpression.h"
+#include "expression/GroupingExpression.h"
+#include "expression/LiteralExpression.h"
+#include "expression/UnaryExpression.h"
+#include "expression/VariableExpression.h"
+#include "expression/AssignExpression.h"
