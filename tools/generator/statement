@@ -2,3 +2,6 @@ ExpressionStatement# AbstractExpression expression
 PrintStatement# AbstractExpression expression
 VariableStatement # Token name, AbstractExpression initializer
 BlockStatement# std::vector<AbstractStatementRef> statments
+IfStatement# AbstractExpression condtion, AbstractStatement then, AbstractStatement else
+WhileStatement# AbstractExpression condtion, AbstractStatement body
+FunctionStatement# Token name, std::vector<Token> params, AbstractStatement body

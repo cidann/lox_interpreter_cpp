@@ -1,19 +1,21 @@
 #pragma once
 
 #include <array>
+#include <cstddef>
 #include <cstdint>
+#include <functional>
 #include <memory>
 #include <string>
 #include <unordered_map>
 #include <utility>
 #include <variant>
+#include "symbol/types.h"
 
 
 #undef EOF
 
 namespace lox {
-class LoxLiterals;
-using LoxTypes=std::variant<std::string,bool,int64_t,double,std::monostate>;
+
 enum class TokenType{
     // Single-character tokens.
     LEFT_PAREN=0, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,
@@ -36,6 +38,8 @@ enum class TokenType{
 };
 
 /*
+class LoxLiterals;
+
 class LoxTypes{
     public:
     LoxTypes():value_(std::monostate{}){}
@@ -88,7 +92,7 @@ class Token{
     Token(TokenType type,std::string lexeme,LoxTypes literal,int line);
     Token(Token &&token)=default;
     Token(const Token &token)=default;
-    
+    auto operator=(const Token &token)->Token& =default;
 
     auto ToString()->std::string;
 

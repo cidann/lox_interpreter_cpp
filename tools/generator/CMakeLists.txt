@@ -1,11 +1,11 @@
 
-set(
-    GENERATED_FILES
-    BinaryExpression.h
-    GroupingExpression.h
-    LiteralExpression.h
-    UnaryExpression.h
-)
+#set(
+#    GENERATED_FILES
+#    BinaryExpression.h
+#    GroupingExpression.h
+#    LiteralExpression.h
+#    UnaryExpression.h
+#)
 
 #foreach(file ${GENERATED_FILES})
 #    set(
@@ -37,5 +37,3 @@ add_custom_target(
     generate_ast
     DEPENDS generate_ast_expression generate_ast_statement
 )
-
-add_dependencies(lox generate_ast)

@@ -34,6 +34,7 @@ set(
 target_link_libraries(
     lox
     ${LOX_LIBS}
+    ${LOX_THIRD_PARTY_LIB}
 )
 
 target_include_directories(

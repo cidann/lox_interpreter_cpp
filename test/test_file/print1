@@ -1,0 +1,3 @@
+print "hello" or false;
+print "hello" and false;
+print nil or true;

@@ -4,3 +4,5 @@ LiteralExpression # Token value
 UnaryExpression # Token operator, AbstractExpression right
 VariableExpression # Token name
 AssignExpression# Token name, AbstractExpression expression
+LogicalExpression# AbstractExpression left, Token operator, AbstractExpression right
+CallExpression# AbstractExpression callee, Token paren, std::vector<AbstractExpressionRef> args

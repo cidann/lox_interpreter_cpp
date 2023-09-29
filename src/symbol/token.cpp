@@ -16,8 +16,8 @@ Token::Token(TokenType type,std::string lexeme,LoxTypes literal,int line):
 auto Token::ToString() -> std::string{
     std::ostringstream iss;
     
-    iss<<Token::token_type_map[static_cast<int>(this->type_)]
-    <<" "<<line_<<" "<<lexeme_;
+    iss<<"Type: "<<Token::token_type_map[static_cast<int>(this->type_)]
+    <<" Line: "<<line_<<" Symbol: "<<lexeme_;
     return iss.str();
 }
 

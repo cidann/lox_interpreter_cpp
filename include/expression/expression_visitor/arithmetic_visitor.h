@@ -5,7 +5,7 @@
 #include "expression/expression_visitor/expression_visitor.h"
 #include "symbol/token.h"
 
-
+/*
 namespace lox{
     class ArithmeticVisitor:public ExpressionVisitor<LoxLiterals> {
         public:
@@ -18,3 +18,4 @@ namespace lox{
         ~ArithmeticVisitor() override =default;
     };
 }  // namespace lox
+*/

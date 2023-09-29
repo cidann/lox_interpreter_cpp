@@ -46,17 +46,27 @@ class Parser{
         auto Parse()->std::vector<AbstractStatementRef>;
         //Context free language rules from low to high priority
         auto Expression()->AbstractExpressionRef; //→ assigment ;
-        auto Assign()->AbstractExpressionRef;//→ IDENTIFIER "=" assignment | equality ;
+        auto Assign()->AbstractExpressionRef;//→ IDENTIFIER "=" assignment | logical_or ;
+        auto LogicalOr()->AbstractExpressionRef; //logical_or-> logical_and ("or" logical_and)*;
+        auto LogicalAnd()->AbstractExpressionRef; //logical_and-> Equality ("and" Equality)*;
         auto Equality()->AbstractExpressionRef; //→ comparison ( ( "!=" | "==" ) comparison )* ;
         auto Comparison()->AbstractExpressionRef; //→ term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
         auto Term()->AbstractExpressionRef; //→ factor ( ( "-" | "+" ) factor )* ;
         auto Factor()->AbstractExpressionRef; //→ unary ( ( "/" | "*" ) unary )* ;
-        auto Unary()->AbstractExpressionRef; //→ ( "!" | "-" ) unary | primary ;
-        auto Primary()->AbstractExpressionRef; //→ NUMBER | STRING | "true" | "false" | "nil" | "(" expression ")" ;
+        auto Unary()->AbstractExpressionRef; //→ ( "!" | "-" ) unary | call ;
+        auto Call()->AbstractExpressionRef; //→ primary("(" argument? ")")* ;
+        auto Argument()->std::vector<AbstractExpressionRef>; //→ expression ("," expression)*;
+        auto Primary()->AbstractExpressionRef; //→ NUMBER | STRING | "true" | "false" | "nil" |IDENTIFIER| "(" expression ")" ;
         
-        auto Declaration()->AbstractStatementRef; // declaration → varDecl | statement ;
+        auto Declaration()->AbstractStatementRef; // declaration → funDecl | varDecl | statement ;
+        auto FunctionDeclaration()->AbstractStatementRef;// "fun" functionDef
+        auto FunctionDefintion()->AbstractStatementRef; //IDENTIFIER "(" parameters? ")" block;
+        auto Parameter()->std::vector<Token>; //→ IDENTIFIER ( "," IDENTIFIER )* ;
         auto VariableDeclaration()->AbstractStatementRef; //"var" IDENTIFIER ( "=" expression )? ";" ;
-        auto Statement()->AbstractStatementRef; // statement → exprStmt | printStmt |block;
+        auto Statement()->AbstractStatementRef; // statement → forStmt|whileStmt|ifStmt |exprStmt | printStmt |block;
+        auto ForStmt()->AbstractStatementRef; // "for" "(" varDecl|exprStmt|";" expression? ";" expression? ")" statement;
+        auto WhileStmt()->AbstractStatementRef;// whileStmt-> "while" "("expression ")" statement ;
+        auto IfStmt()->AbstractStatementRef; // ifStmt → "if" "("expression")" statement ("else" statement)?;
         auto PrintStmt()->AbstractStatementRef;// printStmt → "print" expression ";" ;
         auto ExpressionStmt()->AbstractStatementRef; // exprStmt → expression ";" ;
         auto Block()->AbstractStatementRef; //"{" declaration* "}" ;

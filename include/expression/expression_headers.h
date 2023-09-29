@@ -5,3 +5,5 @@
 #include "expression/UnaryExpression.h"
 #include "expression/VariableExpression.h"
 #include "expression/AssignExpression.h"
+#include "expression/LogicalExpression.h"
+#include "expression/CallExpression.h"

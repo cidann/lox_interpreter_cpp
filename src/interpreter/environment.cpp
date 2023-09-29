@@ -40,6 +40,15 @@ auto Environment::Get(const std::string& name)->LoxTypes&{
     throw EnvironmentException("Trying to Get non existent variable");
 }
 
+auto Environment::Set(const std::string& name,const LoxTypes& val)->LoxTypes{
+    auto itr=Find(name);
+    if(itr!=End()){
+        itr->second=val;
+        return itr->second;
+    }
+    
+    throw EnvironmentException("Trying to Set non existent variable");
+}
 
 auto Environment::Assign(const std::string& name,const LoxTypes& val)->LoxTypes{
     names_[name]=val;

@@ -7,9 +7,17 @@
         {
             "type": "lldb",
             "request": "launch",
+            "name": "Debug logical",
+            "program": "${workspaceFolder}/build/bin/lox_compiler",
+            "args": ["${workspaceFolder}/test/test_file/test4"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
             "name": "Debug",
             "program": "${workspaceFolder}/build/bin/lox_compiler",
-            "args": ["${workspaceFolder}/test/test_file/test1"],
+            "args": ["${workspaceFolder}/test/test_file/function1"],
             "cwd": "${workspaceFolder}"
         },
         {

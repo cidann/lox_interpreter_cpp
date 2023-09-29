@@ -26,7 +26,17 @@ void Run(const std::string& s){
 
     Parser parser{tokens};
     Interpreter interpreter;
-    auto statements=parser.Parse();
-    auto result=interpreter.Interpret(statements);
+    try{
+        auto statements=parser.Parse();
+        auto result=interpreter.Interpret(statements);
+    }   
+    catch(ParserException e){
+        std::cout<<"Compile time error"<<std::endl;
+        std::cout<<e.what()<<std::endl;
+    }
+    catch(LoxRuntimeError e){
+        std::cout<<"Run time error"<<std::endl;
+        std::cout<<e.what()<<std::endl;
+    }
 }
 }  // namespace lox

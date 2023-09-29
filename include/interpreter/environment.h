@@ -20,6 +20,9 @@ class Environment{
     explicit Environment(std::unique_ptr<Environment>&& prev);
     auto Contains(const std::string& name)->bool;
     auto Get(const std::string& name)->LoxTypes&;
+    //This is for setting the variable that was already created starting from current scope and going up
+    auto Set(const std::string& name,const LoxTypes& val)->LoxTypes;
+    //This is intended for var declaration only and so only assign to current scope
     auto Assign(const std::string& name,const LoxTypes& val)->LoxTypes;
     auto Prev()-> std::unique_ptr<Environment> &;
     

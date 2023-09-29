@@ -4,8 +4,9 @@
 #include <string>
 #include "expression/expression_visitor/expression_visitor.h"
 #include "symbol/token.h"
+#include "symbol/types.h"
 
-
+/*
 namespace lox{
     class PrintVisitor:public ExpressionVisitor<LoxLiterals> {
         public:
@@ -18,3 +19,4 @@ namespace lox{
         ~PrintVisitor() override =default;
     };
 }  // namespace lox
+*/
