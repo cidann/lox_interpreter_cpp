@@ -1,0 +1,11 @@
+fun returnString(another){
+    var a="Hello ";
+    return a+another;
+}
+
+fun noReturn(){
+    print "no return print called inside function";
+}
+
+print returnString("world");
+print noReturn();

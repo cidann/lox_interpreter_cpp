@@ -3,6 +3,7 @@
 
 #include <any>
 #include <cstdint>
+#include <future>
 #include <memory>
 #include <stdexcept>
 #include <string>
@@ -13,11 +14,12 @@
 #include "expression/expression_visitor/expression_visitor.h"
 #include "interpreter/environment.h"
 #include "statement/FunctionStatement.h"
+#include "statement/ReturnStatement.h"
 #include "statement/VariableStatement.h"
 #include "statement/statement_visitor/statement_visitor.h"
-#include "expression/expression_visitor/print_visitor.h"
 #include "parser/parser.h"
 #include "symbol/token.h"
+#include "symbol/types.h"
 
 namespace lox {
     
@@ -27,6 +29,12 @@ class LoxRuntimeError:public std::runtime_error{
         :std::runtime_error(msg),token_(std::move(token)){}
     private:
     Token token_;
+};
+
+class LoxReturn:public std::runtime_error{
+    public:
+    explicit LoxReturn(LoxTypes return_value):std::runtime_error(""),return_value_(std::move(return_value)){}
+    LoxTypes return_value_;
 };
 
 class CurEnvGuard;
@@ -50,6 +58,7 @@ class Interpreter:public ExpressionVisitor<LoxTypes>,public StatementVisitor<Lox
     auto Visit(WhileStatement &exp)const->LoxTypes override;
     auto Visit(CallExpression &exp)const->LoxTypes override;
     auto Visit(FunctionStatement &exp)const->LoxTypes override;
+    auto Visit(ReturnStatement &exp)const->LoxTypes override;
 
     auto InterpretEqual(const LoxTypes &obj1,const LoxTypes &obj2,const Token &t)const->bool;
     auto InterpretLess(const LoxTypes &obj1,const LoxTypes &obj2,const Token &t)const->bool;
@@ -73,12 +82,13 @@ class Interpreter:public ExpressionVisitor<LoxTypes>,public StatementVisitor<Lox
     private:
     class CurEnvGuard{
         public:
-            explicit CurEnvGuard(const Interpreter &interpreter);
+            explicit CurEnvGuard(const Interpreter &interpreter,const std::shared_ptr<Environment> &scope_image=nullptr);
             ~CurEnvGuard();
         private:
         const Interpreter& interpreter_;
+        std::shared_ptr<Environment> old_;
     };
-    mutable std::unique_ptr<Environment> environment_=std::make_unique<Environment>();
+    mutable std::shared_ptr<Environment> environment_=std::make_shared<Environment>();
 };
 
 

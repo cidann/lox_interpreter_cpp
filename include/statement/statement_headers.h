@@ -6,3 +6,4 @@
 #include "statement/IfStatement.h"
 #include "statement/WhileStatement.h"
 #include "statement/FunctionStatement.h"
+#include "statement/ReturnStatement.h"

@@ -6,7 +6,7 @@
 #include <sstream>
 #include <string>
 #include <filesystem>
-#include "core/core.h"
+#include "driver/driver.h"
 
 namespace lox {
 void RunPrompt(){

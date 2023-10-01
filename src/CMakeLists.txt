@@ -1,11 +1,12 @@
 add_subdirectory(input)
 add_subdirectory(scanner)
-add_subdirectory(core)
+add_subdirectory(driver)
 add_subdirectory(helper)
 add_subdirectory(symbol)
-add_subdirectory(visitor)
 add_subdirectory(parser)
 add_subdirectory(interpreter)
+add_subdirectory(resolver)
+add_subdirectory(function)
 
 add_library(lox STATIC)
 
@@ -13,12 +14,13 @@ set(
     LOX_LIBS
     lox_input
     lox_scanner
-    lox_core
+    lox_driver
     lox_helper
     lox_symbol
-    lox_visitor
     lox_parser
     lox_interpreter
+    lox_resolver
+    lox_builtin_function
 )
 
 

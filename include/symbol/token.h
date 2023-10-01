@@ -101,6 +101,7 @@ class Token{
     std::string lexeme_;
     LoxTypes literal_;
     int line_; 
+    int start_scope_=0;
 };
 
 

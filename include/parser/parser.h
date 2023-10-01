@@ -63,7 +63,8 @@ class Parser{
         auto FunctionDefintion()->AbstractStatementRef; //IDENTIFIER "(" parameters? ")" block;
         auto Parameter()->std::vector<Token>; //→ IDENTIFIER ( "," IDENTIFIER )* ;
         auto VariableDeclaration()->AbstractStatementRef; //"var" IDENTIFIER ( "=" expression )? ";" ;
-        auto Statement()->AbstractStatementRef; // statement → forStmt|whileStmt|ifStmt |exprStmt | printStmt |block;
+        auto Statement()->AbstractStatementRef; // statement → returnStmt|forStmt|whileStmt|ifStmt |exprStmt | printStmt |block;
+        auto ReturnStmt()->AbstractStatementRef;// "return" expression? ";" ;
         auto ForStmt()->AbstractStatementRef; // "for" "(" varDecl|exprStmt|";" expression? ";" expression? ")" statement;
         auto WhileStmt()->AbstractStatementRef;// whileStmt-> "while" "("expression ")" statement ;
         auto IfStmt()->AbstractStatementRef; // ifStmt → "if" "("expression")" statement ("else" statement)?;

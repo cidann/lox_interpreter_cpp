@@ -1,9 +1,8 @@
+#include "resolver/resolver.h"
 #define FMT_HEADER_ONLY
-#include "core/core.h"
+#include "driver/driver.h"
 #include <fmt/format.h>
-#include "expression/expression_visitor/arithmetic_visitor.h"
 #include "interpreter/interpreter.h"
-#include "expression/expression_visitor/print_visitor.h"
 #include "parser/parser.h"
 #include "scanner/scanner.h"
 #include "symbol/token.h"
@@ -26,8 +25,10 @@ void Run(const std::string& s){
 
     Parser parser{tokens};
     Interpreter interpreter;
+    Resolver resolver;
     try{
         auto statements=parser.Parse();
+        resolver.Resolve(statements);
         auto result=interpreter.Interpret(statements);
     }   
     catch(ParserException e){

@@ -217,7 +217,7 @@ auto Parser::FunctionDeclaration()->AbstractStatementRef{
 auto Parser::FunctionDefintion()->AbstractStatementRef{
     auto name=Consume(TokenType::IDENTIFIER, "expected identifier after fun");
     Consume(TokenType::LEFT_PAREN, "Expect ( after function declartion");
-    std::unique_ptr<std::vector<Token>> params=nullptr;
+    std::unique_ptr<std::vector<Token>> params=std::make_unique<std::vector<Token>>();
     if(!Match(TokenType::RIGHT_PAREN)){
         params=std::make_unique<std::vector<Token>>(Parameter());
     }
@@ -265,6 +265,9 @@ auto Parser::VariableDeclaration()->AbstractStatementRef{
 }
 
 auto Parser::Statement()->AbstractStatementRef{
+    if(Match(TokenType::RETURN)){
+        return ReturnStmt();
+    }
     if(Match(TokenType::FOR)){
         return ForStmt();
     }
@@ -281,6 +284,16 @@ auto Parser::Statement()->AbstractStatementRef{
         return Block();
     }
     return ExpressionStmt();
+}
+
+auto Parser::ReturnStmt()->AbstractStatementRef{
+    auto ret_token=Consume(TokenType::RETURN, "return statement expect return");
+    AbstractExpressionRef return_value=nullptr;
+    if(!Match(TokenType::SEMICOLON)){
+        return_value=Expression();
+    }
+    Consume(TokenType::SEMICOLON, "Expect ; at end of return statement");
+    return std::make_unique<ReturnStatement>(std::make_unique<Token>(ret_token),std::move(return_value));
 }
 
 auto Parser::ForStmt()->AbstractStatementRef{

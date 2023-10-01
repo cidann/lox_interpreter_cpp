@@ -1,6 +1,7 @@
 #pragma once
 
 
+
 namespace lox {
 class ExpressionStatement;
 class PrintStatement;
@@ -10,6 +11,7 @@ class BlockStatement;
 class IfStatement;
 class WhileStatement;
 class FunctionStatement;
+class ReturnStatement;
 
 template<typename T>
 class StatementVisitor{
@@ -22,6 +24,7 @@ class StatementVisitor{
         virtual auto Visit(IfStatement &exp)const->T=0;
         virtual auto Visit(WhileStatement &exp)const->T=0;
         virtual auto Visit(FunctionStatement &exp)const->T=0;
+        virtual auto Visit(ReturnStatement &exp)const->T=0;
         
 
         virtual ~StatementVisitor<T>()=default;

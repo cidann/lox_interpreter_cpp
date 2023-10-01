@@ -1,0 +1,7 @@
+var a="hello";
+{
+    var a=a+" 11111111";
+    print a;
+}
+
+print "hello world";
