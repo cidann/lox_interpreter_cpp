@@ -12,6 +12,9 @@ class VariableExpression;
 class AssignExpression;
 class LogicalExpression;
 class CallExpression;
+class GetAttributeExpression;
+class SetAttributeExpression;
+class ThisExpression;
 
 template<typename T>
 class ExpressionVisitor{
@@ -25,6 +28,9 @@ class ExpressionVisitor{
         virtual auto Visit(AssignExpression &exp)const->T=0;
         virtual auto Visit(LogicalExpression &exp)const->T=0;
         virtual auto Visit(CallExpression &exp)const->T=0;
+        virtual auto Visit(GetAttributeExpression &exp)const->T=0;
+        virtual auto Visit(SetAttributeExpression &exp)const->T=0;
+        virtual auto Visit(ThisExpression &exp)const->T=0;
 
         virtual ~ExpressionVisitor<T>()=default;
         

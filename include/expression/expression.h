@@ -3,7 +3,7 @@
 #include <any>
 #include <memory>
 #include "expression/expression_visitor/expression_visitor.h"
-#include "symbol/token.h"
+#include "symbol/types.h"
 
 namespace lox {
     

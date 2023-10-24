@@ -23,7 +23,7 @@ def generate_class(dir,name,fields,type):
 #include <memory>
 #include "statement/statement.h"
 #include "expression/expression.h"
-#include "symbol/token.h"
+#include "symbol/types.h"
 #include <any>
 #include <vector>
 #include "parser/parser.h"

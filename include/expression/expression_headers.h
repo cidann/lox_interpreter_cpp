@@ -7,3 +7,6 @@
 #include "expression/AssignExpression.h"
 #include "expression/LogicalExpression.h"
 #include "expression/CallExpression.h"
+#include "expression/GetAttributeExpression.h"
+#include "expression/SetAttributeExpression.h"
+#include "expression/ThisExpression.h"

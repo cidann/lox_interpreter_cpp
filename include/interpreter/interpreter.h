@@ -11,6 +11,7 @@
 #include <utility>
 #include <variant>
 #include <vector>
+#include "expression/ThisExpression.h"
 #include "expression/expression_visitor/expression_visitor.h"
 #include "interpreter/environment.h"
 #include "statement/FunctionStatement.h"
@@ -59,6 +60,10 @@ class Interpreter:public ExpressionVisitor<LoxTypes>,public StatementVisitor<Lox
     auto Visit(CallExpression &exp)const->LoxTypes override;
     auto Visit(FunctionStatement &exp)const->LoxTypes override;
     auto Visit(ReturnStatement &exp)const->LoxTypes override;
+    auto Visit(ClassStatement &exp)const->LoxTypes override;
+    auto Visit(GetAttributeExpression &exp)const->LoxTypes override;
+    auto Visit(SetAttributeExpression &exp)const->LoxTypes override;
+    auto Visit(ThisExpression &exp)const->LoxTypes override;
 
     auto InterpretEqual(const LoxTypes &obj1,const LoxTypes &obj2,const Token &t)const->bool;
     auto InterpretLess(const LoxTypes &obj1,const LoxTypes &obj2,const Token &t)const->bool;
@@ -71,6 +76,10 @@ class Interpreter:public ExpressionVisitor<LoxTypes>,public StatementVisitor<Lox
     auto InterpretInt(const LoxTypes &obj,const Token &t)const->int64_t;
     auto InterpretDouble(const LoxTypes &obj,const Token &t)const->double;
     auto InterpretString(const LoxTypes& value)const->std::string;
+    auto InterpretArgs(const std::unique_ptr<std::vector<AbstractExpressionRef>>& args)const->std::vector<LoxTypes>;
+    auto InterpretCall(const LoxCallable& fcn, const std::vector<LoxTypes>& args)const->LoxTypes;
+    auto InterpretFunction(const FunctionStatement &exp,bool is_method=false)const->Box<LoxFunc>;
+    auto InterpretClassMethods(const ClassStatement &exp)const->std::unordered_map<std::string, Box<LoxCallable>>;
 
     template<typename T>
     auto InterpretType(const LoxTypes &obj,const Token& token)const->T;

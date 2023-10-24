@@ -103,7 +103,7 @@ void Scanner::ScanString(){
     Next();
     // Trim the surrounding quotes.
     std::string value{start_ + 1, current_ - 1};
-    tokens_.emplace_back(TokenType::STRING, value,LoxTypes{value},line_);
+    tokens_.emplace_back(TokenType::STRING, value,LoxLiterals{value},line_);
 }
 
 void Scanner::ScanNumber(){
@@ -123,10 +123,10 @@ void Scanner::ScanNumber(){
     }
     std::string num{start_, current_};
     if(is_double){
-        tokens_.emplace_back(TokenType::NUMBER,num,LoxTypes{std::stod(num)},line_);
+        tokens_.emplace_back(TokenType::NUMBER,num,LoxLiterals{std::stod(num)},line_);
     }
     else{
-        tokens_.emplace_back(TokenType::NUMBER,num,LoxTypes{std::stoll(num)},line_);
+        tokens_.emplace_back(TokenType::NUMBER,num,LoxLiterals{std::stoll(num)},line_);
     }
 }
 

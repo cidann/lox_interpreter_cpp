@@ -1,7 +1,7 @@
 #pragma once
 
 #include "statement/statement_visitor/statement_visitor.h"
-#include "symbol/token.h"
+#include "symbol/types.h"
 
 namespace lox {
 class AbstractStatement{

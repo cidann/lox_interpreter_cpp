@@ -1,3 +1,7 @@
+#include <unordered_map>
+#include "helper/helper.h"
+#include "statement/ClassStatement.h"
+#include "statement/FunctionStatement.h"
 #define FMT_HEADER_ONLY
 
 #include <algorithm>
@@ -25,7 +29,7 @@
 namespace lox {
 
 auto Interpreter::Interpret(std::vector<AbstractStatementRef> &statments)const->LoxTypes{
-    LoxCallable clock_builtin{"clock",LoxClock,{},environment_};
+    Box<LoxCallable> clock_builtin{LoxFunc{"clock",LoxClock,{},environment_,false}};
     environment_->Assign("clock", clock_builtin);
     for(auto &stmt:statments){
         stmt->Accept(*this);
@@ -64,7 +68,7 @@ auto Interpreter:: Visit(GroupingExpression &exp)const->LoxTypes{
     return exp.expression_->Accept(*this);
 }
 auto Interpreter:: Visit(LiteralExpression &exp)const->LoxTypes{
-    return exp.value_->literal_;
+    return std::visit([](auto &v)->LoxTypes{return v;},exp.value_->literal_);
 }
 auto Interpreter:: Visit(UnaryExpression &exp)const->LoxTypes{
     auto right=exp.right_->Accept(*this);
@@ -154,42 +158,29 @@ auto Interpreter::Visit(WhileStatement &exp)const->LoxTypes{
 
 auto Interpreter::Visit(CallExpression &exp)const->LoxTypes {
     auto primary=exp.callee_->Accept(*this);
-    if(std::holds_alternative<LoxCallable>(primary)){
-        auto fcn=std::get<LoxCallable>(primary);
-        if(fcn.arity_!=exp.args_->size()){
+    if(std::holds_alternative<Box<LoxCallable>>(primary)){
+        auto fcn=std::get<Box<LoxCallable>>(primary);
+        /*Work around since I do not bind args in function but rather in interpreter before calling function
+        and environment holding this should be before environment holding args.
+        */
+        auto class_ptr=dynamic_cast<LoxClass*>(fcn.Get());
+        if(class_ptr!=nullptr){
+            fcn->env_=std::make_shared<Environment>(std::move(fcn->env_));
+            fcn->env_->Assign("this", std::make_shared<LoxInstance>(*class_ptr));
+        }
+        if(fcn->Arity()!=exp.args_->size()){
             throw LoxRuntimeError(*exp.paren_,"Invalid number of arguments");
         }
-        std::vector<LoxTypes> primary_args(exp.args_->size());
-        std::transform(
-            exp.args_->begin(),
-            exp.args_->end(),
-            primary_args.begin(),[this](AbstractExpressionRef &arg){
-                return arg->Accept(*this);
-            }
-        );
-        CurEnvGuard env_guard{*this,fcn.env_};
-        for(std::size_t i=0;i<fcn.arity_;i++){
-            environment_->Assign(fcn.params_[i].lexeme_, primary_args[i]);
-        }
-        try{
-            fcn(*this,primary_args);
-        }
-        catch(LoxReturn r){
-            return r.return_value_;
-        }
-        return LoxTypes{};
+        auto primary_args=InterpretArgs(exp.args_);
+        return InterpretCall(*fcn, primary_args);
     }
     throw LoxRuntimeError(*exp.paren_,"The value is not callable");
 }
 
-
 auto Interpreter::Visit(FunctionStatement &exp)const->LoxTypes{
-    auto declared_fcn=[&exp](const Interpreter &interpreter,const std::vector<LoxTypes>& args)->LoxTypes{
-        return exp.body_->Accept(interpreter);
-    };
-    auto fcn_obj=LoxCallable{exp.name_->lexeme_,declared_fcn,*exp.params_,environment_};
-    environment_->Assign(exp.name_->lexeme_, fcn_obj);
-    return LoxTypes{};
+    auto fcn_obj=Box<LoxCallable>{InterpretFunction(exp)};
+    environment_->Assign(exp.name_->lexeme_, LoxTypes{fcn_obj});
+    return fcn_obj;
 }
 
 
@@ -199,6 +190,49 @@ auto Interpreter::Visit(ReturnStatement &exp)const->LoxTypes{
     }
     throw LoxReturn{exp.initializer_->Accept(*this)};
 }
+
+
+auto Interpreter::Visit(ClassStatement &exp)const->LoxTypes{
+    auto new_class=LoxClass{exp.name_->lexeme_,{},environment_,InterpretClassMethods(exp)};
+    
+    environment_->Assign(exp.name_->lexeme_, Box<LoxCallable>{std::move(new_class)});
+    return {};
+}
+
+auto Interpreter::Visit(GetAttributeExpression &exp)const->LoxTypes{
+    auto object=exp.object_->Accept(*this);
+    if(std::holds_alternative<std::shared_ptr<LoxInstance>>(object)){
+        auto instance=std::get<std::shared_ptr<LoxInstance>>(object);
+        if(instance->fields_.find(exp.attribute_->lexeme_)!=instance->fields_.end()){
+            return instance->fields_[exp.attribute_->lexeme_];
+        }
+        if(instance->loxclass_.methods_.find(exp.attribute_->lexeme_)!=instance->loxclass_.methods_.end()){
+            auto &method=instance->loxclass_.methods_[exp.attribute_->lexeme_];
+            method->env_=std::make_shared<Environment>(std::move(method->env_));
+            method->env_->Assign("this", instance);
+            return method;
+        }
+        throw LoxRuntimeError(*exp.attribute_,"Undefined property");
+    }
+    throw LoxRuntimeError(*exp.attribute_,"Only instance have property");
+}
+
+auto Interpreter::Visit(SetAttributeExpression &exp)const->LoxTypes{
+    auto object=exp.object_->Accept(*this);
+    if(std::holds_alternative<std::shared_ptr<LoxInstance>>(object)){
+        auto instance=std::get<std::shared_ptr<LoxInstance>>(object);
+        auto value=exp.value_->Accept(*this);
+        instance->fields_[exp.attribute_->lexeme_]=value;
+        return instance;
+    }
+    throw LoxRuntimeError(*exp.attribute_,"Only instance have property");
+}
+
+
+auto Interpreter::Visit(ThisExpression &exp)const->LoxTypes{
+    return environment_->GetAt(exp.keyword_->start_scope_,exp.keyword_->lexeme_ );
+}
+
 
 auto Interpreter::InterpretEqual(const LoxTypes &obj1,const LoxTypes &obj2,const Token &t)const->bool{
     return obj1==obj2;
@@ -356,14 +390,76 @@ auto Interpreter::InterpretString(const LoxTypes& value)const->std::string{
     if(std::holds_alternative<std::monostate>(value)){
         return "nil";
     }
-    if(std::holds_alternative<LoxCallable>(value)){
-        return std::get<LoxCallable>(value).ToString();
+    if(std::holds_alternative<Box<LoxCallable>>(value)){
+        return std::get<Box<LoxCallable>>(value)->ToString();
+    }
+    if(std::holds_alternative<std::shared_ptr<LoxInstance>>(value)){
+        return std::get<std::shared_ptr<LoxInstance>>(value)->ToString();
     }
     throw std::runtime_error("Unkown type bug occured");
 }
 
 auto Interpreter::IsNumber(const LoxTypes &obj)const->bool{
     return std::holds_alternative<int64_t>(obj)||std::holds_alternative<double>(obj);
+}
+
+
+auto Interpreter::InterpretArgs(const std::unique_ptr<std::vector<AbstractExpressionRef>>& args)const->std::vector<LoxTypes>{
+    std::vector<LoxTypes> primary_args(args->size());
+    std::transform(
+        args->begin(),
+            args->end(),
+        primary_args.begin(),[this](AbstractExpressionRef &arg){
+            return arg->Accept(*this);
+        }
+    );
+    return primary_args;
+}
+
+auto Interpreter::InterpretCall(const LoxCallable& fcn, const std::vector<LoxTypes>& args)const->LoxTypes{
+    CurEnvGuard env_guard{*this,fcn.env_};
+
+    auto& fcn_params=fcn.Param();
+    for(std::size_t i=0;i<fcn.Arity();i++){
+        environment_->Assign(fcn_params[i].lexeme_, args[i]);
+    }
+    LoxTypes return_val;
+    try{
+        fcn(*this,args);
+    }
+    catch(LoxReturn r){
+        return_val=r.return_value_;
+    }
+    if(fcn.initializer_&&fcn.name_=="init"){
+        return_val=environment_->Get("this");
+    }
+    return return_val;
+}
+
+
+auto Interpreter::InterpretFunction(const FunctionStatement &exp,bool is_method)const->Box<LoxFunc>{
+    auto declared_fcn=[&exp](const Interpreter &interpreter,const std::vector<LoxTypes>& args)->LoxTypes{
+        return exp.body_->Accept(interpreter);
+    };
+    bool is_initializer=is_method&&exp.name_->lexeme_=="init";
+    auto fcn_obj=Box<LoxFunc>{LoxFunc{exp.name_->lexeme_,declared_fcn,*exp.params_,environment_,is_initializer}};
+    return fcn_obj;
+}
+
+auto Interpreter::InterpretClassMethods(const ClassStatement &exp)const->std::unordered_map<std::string, Box<LoxCallable>>{
+    std::unordered_map<std::string, Box<LoxCallable>> methods;
+    for(auto &expr_ref:*exp.methods_){
+        auto method_ref=DynamicUniquePointerCast<FunctionStatement>(std::move(expr_ref));
+        if(method_ref){
+            auto ptr_guard=PointerTransferGuard(expr_ref,method_ref);
+            auto fcn_obj=InterpretFunction(*method_ref,true);
+            methods[method_ref->name_->lexeme_]=fcn_obj;
+        }
+        else{
+            throw LoxRuntimeError(*exp.name_,"Non function detected inside classes");
+        }
+    }
+    return methods;
 }
 
 Interpreter::CurEnvGuard::CurEnvGuard(const Interpreter &interpreter,const std::shared_ptr<Environment> &scope_image):interpreter_(interpreter){

@@ -21,4 +21,17 @@ auto DynamicUniquePointerCast(std::unique_ptr<U>&& ptr)->std::unique_ptr<T>{
     return nullptr;
 }
 
+template <typename T,typename U>
+class PointerTransferGuard{
+    public:
+    PointerTransferGuard(T& origin,U& now):origin_(origin),now_(now){}
+    ~PointerTransferGuard(){
+        origin_=std::move(now_);
+    }
+
+    private:
+    T& origin_;
+    U& now_;
+};
+
 }  // namespace lox

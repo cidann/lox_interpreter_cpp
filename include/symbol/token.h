@@ -9,13 +9,13 @@
 #include <unordered_map>
 #include <utility>
 #include <variant>
-#include "symbol/types.h"
 
 
 #undef EOF
 
 namespace lox {
 
+using LoxLiterals=std::variant<std::monostate,std::string,bool,int64_t,double>;
 enum class TokenType{
     // Single-character tokens.
     LEFT_PAREN=0, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,
@@ -89,7 +89,7 @@ class Token{
     };
 
     Token(TokenType type,std::string lexeme,int line);
-    Token(TokenType type,std::string lexeme,LoxTypes literal,int line);
+    Token(TokenType type,std::string lexeme,LoxLiterals literal,int line);
     Token(Token &&token)=default;
     Token(const Token &token)=default;
     auto operator=(const Token &token)->Token& =default;
@@ -99,7 +99,7 @@ class Token{
 
     TokenType type_;
     std::string lexeme_;
-    LoxTypes literal_;
+    LoxLiterals literal_;
     int line_; 
     int start_scope_=0;
 };

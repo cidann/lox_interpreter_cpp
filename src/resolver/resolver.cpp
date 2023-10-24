@@ -2,6 +2,7 @@
 #include <cstddef>
 #include "helper/helper.h"
 #include "parser/parser.h"
+#include "symbol/types.h"
 
 namespace lox {
 
@@ -83,6 +84,8 @@ auto Resolver::Visit(CallExpression &exp)const->LoxTypes{
 auto Resolver::Visit(FunctionStatement &exp)const->LoxTypes{
     DeclareVariable(exp.name_->lexeme_);
     DefineVariable(exp.name_->lexeme_);
+    auto current_fun_scope_type=func_scope_type_;
+    func_scope_type_=class_scope_type_==ScopeType::CLASS? ScopeType::METHOD:ScopeType::FUNCTION;
 
     EnterScope();
     for(auto& param:*exp.params_){
@@ -91,11 +94,53 @@ auto Resolver::Visit(FunctionStatement &exp)const->LoxTypes{
     }
     Resolve(*exp.body_);
 
+    func_scope_type_=current_fun_scope_type;
     ExitScope();
     return {};
 }
 auto Resolver::Visit(ReturnStatement &exp)const->LoxTypes{
+    if(func_scope_type_!=ScopeType::FUNCTION&&func_scope_type_!=ScopeType::METHOD){
+        Error(*exp.keyword_,"return statement can only be inside function or methods");
+    }
     Resolve(*exp.initializer_);
+    return {};
+}
+
+
+auto Resolver::Visit(ClassStatement &exp)const->LoxTypes{
+    DeclareVariable(exp.name_->lexeme_);
+    DefineVariable(exp.name_->lexeme_);
+    auto current_class_scope_type=class_scope_type_;
+    class_scope_type_=ScopeType::CLASS;
+
+    EnterScope();
+    DeclareVariable("this");
+    DefineVariable("this");
+
+    for(auto &method_ref:*exp.methods_){
+        method_ref->Accept(*this);
+    }
+
+    class_scope_type_=current_class_scope_type;
+    ExitScope();
+    return {};
+}
+
+auto Resolver::Visit(GetAttributeExpression &exp)const->LoxTypes{
+    Resolve(*exp.object_);
+    return {};
+}
+auto Resolver::Visit(SetAttributeExpression &exp)const->LoxTypes{
+    Resolve(*exp.object_);
+    Resolve(*exp.value_);
+    return {};
+}
+
+auto Resolver::Visit(ThisExpression &exp)const->LoxTypes{
+    if(func_scope_type_!=ScopeType::METHOD){
+        Error(*exp.keyword_,"this statement can only be inside methods");
+    }
+    ResolveLocal(*exp.keyword_);
     return {};
 }
 

@@ -6,3 +6,6 @@ VariableExpression # Token name
 AssignExpression# Token name, AbstractExpression expression
 LogicalExpression# AbstractExpression left, Token operator, AbstractExpression right
 CallExpression# AbstractExpression callee, Token paren, std::vector<AbstractExpressionRef> args
+GetAttributeExpression# AbstractExpression object, Token attribute
+SetAttributeExpression# AbstractExpression object, Token attribute, AbstractExpression value
+ThisExpression# Token keyword

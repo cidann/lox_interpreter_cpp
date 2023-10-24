@@ -12,6 +12,7 @@ class IfStatement;
 class WhileStatement;
 class FunctionStatement;
 class ReturnStatement;
+class ClassStatement;
 
 template<typename T>
 class StatementVisitor{
@@ -25,6 +26,7 @@ class StatementVisitor{
         virtual auto Visit(WhileStatement &exp)const->T=0;
         virtual auto Visit(FunctionStatement &exp)const->T=0;
         virtual auto Visit(ReturnStatement &exp)const->T=0;
+        virtual auto Visit(ClassStatement &exp)const->T=0;
         
 
         virtual ~StatementVisitor<T>()=default;

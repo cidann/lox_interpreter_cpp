@@ -2,12 +2,13 @@
 #include <sstream>
 #include <utility>
 #include "interpreter/interpreter.h"
+#include "symbol/types.h"
 
 namespace lox{
 Token::Token(TokenType type,std::string lexeme,int line):
             type_(type),lexeme_(std::move(lexeme)),line_(line){}
 
-Token::Token(TokenType type,std::string lexeme,LoxTypes literal,int line):
+Token::Token(TokenType type,std::string lexeme,LoxLiterals literal,int line):
             type_(type),lexeme_(std::move(lexeme)),literal_(std::move(literal)),line_(line){}
 
 

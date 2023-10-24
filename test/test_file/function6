@@ -5,3 +5,11 @@ var a="hello";
 }
 
 print "hello world";
+
+fun test(a,b,c){
+    return "result:"+a+b+c;
+}
+
+var closure=test;
+
+print closure(1,2,3);

@@ -6,3 +6,4 @@ IfStatement# AbstractExpression condtion, AbstractStatement then, AbstractStatem
 WhileStatement# AbstractExpression condtion, AbstractStatement body
 FunctionStatement# Token name, std::vector<Token> params, AbstractStatement body
 ReturnStatement# Token keyword, AbstractExpression initializer
+ClassStatement# Token name, std::vector<AbstractStatementRef> methods

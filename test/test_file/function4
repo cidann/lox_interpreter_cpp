@@ -16,3 +16,4 @@ fun testScope() {
 }
 var i=1111111111;
 testScope();
+counter();

@@ -11,17 +11,19 @@
 
 namespace lox {
 
-class PrintStatement:public AbstractStatement{
+class ClassStatement:public AbstractStatement{
     public:
     auto Accept(const StatementVisitor<LoxTypes> &visitor)->LoxTypes override{
         return visitor.Visit(*this);
     }
-    explicit PrintStatement(
-        std::unique_ptr<AbstractExpression> expression_
-    ):expression_(std::move(expression_)){}
-    ~PrintStatement()override=default;
+    explicit ClassStatement(
+        std::unique_ptr<Token> name_,
+std::unique_ptr<std::vector<AbstractStatementRef>> methods_
+    ):name_(std::move(name_)),methods_(std::move(methods_)){}
+    ~ClassStatement()override=default;
     
-    std::unique_ptr<AbstractExpression> expression_;
+    std::unique_ptr<Token> name_;
+std::unique_ptr<std::vector<AbstractStatementRef>> methods_;
 };
 
 }  // namespace lox

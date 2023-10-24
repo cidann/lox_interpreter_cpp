@@ -1,12 +1,12 @@
 var a = "global";
 {
- fun fib(n) {
-    if (n <= 1) return n;
-    var hold= fib(n - 2) + fib(n - 1);
-    print a;
-    return hold;
-}
- fib(4);
- var a = "block";
- fib(4);
+    fun fib(n) {
+        if (n <= 1) return n;
+        var hold= fib(n - 2) + fib(n - 1);
+        print a;
+        return hold;
+    }
+    fib(4);
+    var a = "block";
+    fib(4);
 }

@@ -54,11 +54,12 @@ class Parser{
         auto Term()->AbstractExpressionRef; //→ factor ( ( "-" | "+" ) factor )* ;
         auto Factor()->AbstractExpressionRef; //→ unary ( ( "/" | "*" ) unary )* ;
         auto Unary()->AbstractExpressionRef; //→ ( "!" | "-" ) unary | call ;
-        auto Call()->AbstractExpressionRef; //→ primary("(" argument? ")")* ;
+        auto Call()->AbstractExpressionRef; //→ primary("(" argument? ")"| "." IDENTIFIER )* ;
         auto Argument()->std::vector<AbstractExpressionRef>; //→ expression ("," expression)*;
         auto Primary()->AbstractExpressionRef; //→ NUMBER | STRING | "true" | "false" | "nil" |IDENTIFIER| "(" expression ")" ;
         
-        auto Declaration()->AbstractStatementRef; // declaration → funDecl | varDecl | statement ;
+        auto Declaration()->AbstractStatementRef; // declaration → classDecl | funDecl | varDecl | statement ;
+        auto ClassDeclaration()->AbstractStatementRef; // "class" IDENTIFIER "{" functionDef* "}" ;
         auto FunctionDeclaration()->AbstractStatementRef;// "fun" functionDef
         auto FunctionDefintion()->AbstractStatementRef; //IDENTIFIER "(" parameters? ")" block;
         auto Parameter()->std::vector<Token>; //→ IDENTIFIER ( "," IDENTIFIER )* ;
@@ -71,6 +72,8 @@ class Parser{
         auto PrintStmt()->AbstractStatementRef;// printStmt → "print" expression ";" ;
         auto ExpressionStmt()->AbstractStatementRef; // exprStmt → expression ";" ;
         auto Block()->AbstractStatementRef; //"{" declaration* "}" ;
+
+        auto FinishCall(AbstractExpressionRef&& caller)->AbstractExpressionRef;
 
         static auto Error(const Token &token, const std::string &message)->ParserException{
             lox::Error(token,message);

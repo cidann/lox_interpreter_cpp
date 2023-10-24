@@ -2,7 +2,11 @@
 #include <vector>
 #include "expression/AssignExpression.h"
 #include "expression/CallExpression.h"
+#include "expression/GetAttributeExpression.h"
 #include "expression/LiteralExpression.h"
+#include "expression/SetAttributeExpression.h"
+#include "expression/ThisExpression.h"
+#include "statement/ClassStatement.h"
 #include "statement/ExpressionStatement.h"
 #include "statement/statement.h"
 #include "statement/statement_visitor/statement_visitor.h"
@@ -52,7 +56,15 @@ auto Parser::Assign()->AbstractExpressionRef{
                 Assign()
             );
         }
-        throw ParserException("Expected an Identifier to be assigned to");
+        auto instance=DynamicUniquePointerCast<GetAttributeExpression>(std::move(expr));
+        if(instance){
+            return std::make_unique<SetAttributeExpression>(
+                std::move(instance->object_),
+                std::move(instance->attribute_),
+                Assign()
+            );
+        }
+        throw ParserException("Expected an Identifier or instance property to be assigned to");
     }
     return expr;
 }
@@ -143,18 +155,18 @@ auto Parser::Unary()->AbstractExpressionRef{
 
 auto Parser::Call()->AbstractExpressionRef{ //→ primary("(" argument? ")")* ;
     auto prime=Primary();
-    while(Match(TokenType::LEFT_PAREN)){
-        auto left_paren=Advance();
-        std::vector<AbstractExpressionRef> args;
-        if(!Match(TokenType::RIGHT_PAREN)){
-            args=Argument();
+    while(Match(TokenType::LEFT_PAREN,TokenType::DOT)){
+        if (Match(TokenType::LEFT_PAREN)){
+            prime=FinishCall(std::move(prime));
         }
-        Consume(TokenType::RIGHT_PAREN, "expect closing parenthese to function call");
-        prime=std::make_unique<CallExpression>(
-            std::move(prime),
-            std::make_unique<Token>(left_paren),
-            std::make_unique<std::vector<AbstractExpressionRef>>(std::move(args))
-        );
+        else{
+            Consume(TokenType::DOT, "Expect . for get attribute");
+            auto attr=Consume(TokenType::IDENTIFIER, "Expected identifier after .");
+            prime=std::make_unique<GetAttributeExpression>(
+                std::move(prime),
+                std::make_unique<Token>(attr)
+            );
+        }
     }
     return prime;
 }
@@ -191,6 +203,11 @@ auto Parser::Primary()->AbstractExpressionRef{
             std::make_unique<Token>(Advance())
         );
     }
+    if(Match(TokenType::THIS)){
+        return std::make_unique<ThisExpression>(
+            std::make_unique<Token>(Advance())
+        );
+    }
     
     Consume(TokenType::LEFT_PAREN,"Unexpected token");
     auto expr=Expression();
@@ -201,6 +218,9 @@ auto Parser::Primary()->AbstractExpressionRef{
 }
 
 auto Parser::Declaration()->AbstractStatementRef{
+    if(Match(TokenType::CLASS)){
+        return ClassDeclaration();
+    }
     if(Match(TokenType::FUN)){
         return FunctionDeclaration();
     }
@@ -208,6 +228,21 @@ auto Parser::Declaration()->AbstractStatementRef{
         return VariableDeclaration();
     }
     return Statement();
+}
+
+auto Parser::ClassDeclaration()->AbstractStatementRef{
+    Consume(TokenType::CLASS, "Expect class declaration to start with class keyword");
+    auto class_name=Advance();
+    auto methods=std::make_unique<std::vector<AbstractStatementRef>>();
+    Consume(TokenType::LEFT_BRACE, "Expected class declaration to be enclosed in {");
+    while(!Match(TokenType::RIGHT_BRACE)&&!IsEnd()){
+        methods->push_back(FunctionDefintion());
+    }
+    Consume(TokenType::RIGHT_BRACE, "Expected class declaration to be closed with }");
+    return std::make_unique<ClassStatement>(
+        std::make_unique<Token>(class_name),
+        std::move(methods)
+    );
 }
 
 auto Parser::FunctionDeclaration()->AbstractStatementRef{
@@ -317,7 +352,7 @@ auto Parser::ForStmt()->AbstractStatementRef{
     }
     else{
         condition=std::make_unique<LiteralExpression>(
-            std::make_unique<Token>(TokenType::TRUE,"for loop default true",LoxTypes{true},Peek().line_)
+            std::make_unique<Token>(TokenType::TRUE,"for loop default true",LoxLiterals{true},Peek().line_)
         );
     }
     Consume(TokenType::SEMICOLON, "Expect semicolon after condtion expression in for loop");
@@ -396,6 +431,19 @@ auto Parser::Block()->AbstractStatementRef{
     );
 }
 
+auto Parser::FinishCall(AbstractExpressionRef&& caller)->AbstractExpressionRef{
+    auto left_paren=Advance();
+    std::vector<AbstractExpressionRef> args;
+    if(!Match(TokenType::RIGHT_PAREN)){
+        args=Argument();
+    }
+    Consume(TokenType::RIGHT_PAREN, "expect closing parenthese to function call");
+    return std::make_unique<CallExpression>(
+        std::move(caller),
+        std::make_unique<Token>(left_paren),
+        std::make_unique<std::vector<AbstractExpressionRef>>(std::move(args))
+    );
+}
 
 auto Parser::Advance()->Token{
     if(IsEnd()){
