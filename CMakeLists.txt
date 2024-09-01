@@ -4,6 +4,12 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # For clang-tidy.
 set(CMAKE_CXX_STANDARD 17) # Compile as C++17.
 set(CMAKE_CXX_STANDARD_REQUIRED ON) # Require C++17 support.
 
+#toolchain for vcpkg
+set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
+set(VCPKG_TARGET_TRIPLET "x64-linux-clang")
+
+#use clang
+set(CMAKE_CXX_COMPILER clang)
 
 project(Lox
         VERSION 1

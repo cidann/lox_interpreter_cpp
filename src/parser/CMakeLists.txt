@@ -4,3 +4,4 @@ add_library(
     parser.cpp
 )
 
+target_link_libraries(lox_parser fmt::fmt)

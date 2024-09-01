@@ -10,7 +10,6 @@
 #include "statement/ExpressionStatement.h"
 #include "statement/statement.h"
 #include "statement/statement_visitor/statement_visitor.h"
-#define FMT_HEADER_ONLY
 #include "parser/parser.h"
 #include <fmt/format.h>
 #include <iostream>

@@ -2,7 +2,6 @@
 #include "helper/helper.h"
 #include "statement/ClassStatement.h"
 #include "statement/FunctionStatement.h"
-#define FMT_HEADER_ONLY
 
 #include <algorithm>
 #include <cstddef>

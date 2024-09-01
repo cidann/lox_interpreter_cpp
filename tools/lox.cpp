@@ -1,6 +1,3 @@
-#include <cstdlib>
-#include <thread>
-#include <vector>
 #include <iostream>
 #include "input/input.h"
 

@@ -3,3 +3,5 @@ add_library(
     OBJECT
     driver.cpp
 )
+
+target_link_libraries(lox_driver fmt::fmt)

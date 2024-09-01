@@ -1,3 +1,7 @@
+#Find before subdirectory to propagate targets
+find_package(Threads REQUIRED)
+find_package(fmt REQUIRED)
+
 add_subdirectory(input)
 add_subdirectory(scanner)
 add_subdirectory(driver)
@@ -24,13 +28,10 @@ set(
 )
 
 
-find_package(Threads REQUIRED)
-find_package(fmt REQUIRED)
-
 set(
     LOX_THIRD_PARTY_LIB
     Threads::Threads
-    fmt
+    fmt::fmt
 )
 
 target_link_libraries(

@@ -1,5 +1,4 @@
 #include "resolver/resolver.h"
-#define FMT_HEADER_ONLY
 #include "driver/driver.h"
 #include <fmt/format.h>
 #include "interpreter/interpreter.h"
